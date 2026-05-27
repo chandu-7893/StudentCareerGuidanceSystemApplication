@@ -10,69 +10,141 @@ import com.student.repository.StudentRepository;
 @Service
 public class StudentService {
 
-	private final StudentRepository repository;
+    private final StudentRepository repository;
 
-	public StudentService(StudentRepository repository) {
-		this.repository = repository;
-	}
+    public StudentService(StudentRepository repository) {
+        this.repository = repository;
+    }
 
-	public Student saveStudent(Student student) {
-		return repository.save(student);
-	}
+    public Student saveStudent(Student student) {
+        return repository.save(student);
+    }
 
-	public List<Student> getAllStudents() {
-		return repository.findAll();
-	}
+    public List<Student> getAllStudents() {
+        return repository.findAll();
+    }
 
-	public Student getStudentById(Long id) {
-		return repository.findById(id).orElse(null);
-	}
+    public Student getStudentById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
 
-	public void deleteStudent(Long id) {
-		repository.deleteById(id);
-	}
+    public void deleteStudent(Long id) {
+        repository.deleteById(id);
+    }
 
-	public String getCareerSuggestion(Student student) {
+    // Dashboard counts
+    public long getTotalStudents() {
+        return repository.count();
+    }
 
-		String q = student.getQualification();
-		String interest = student.getInterest();
+    public long get10thCount() {
+        return repository.countByQualification("10th");
+    }
 
-		if (q.equalsIgnoreCase("10th")) {
-			if (interest.equalsIgnoreCase("Engineering")) {
-				return "Choose Polytechnic Diploma, MPC Intermediate, ITI Technical Courses.";
-			} else if (interest.equalsIgnoreCase("Medical")) {
-				return "Choose BiPC Intermediate, Paramedical Diploma, Nursing Assistant Course.";
-			} else if (interest.equalsIgnoreCase("Commerce")) {
-				return "Choose CEC Intermediate, MEC Intermediate, Accounting Basics.";
-			} else if (interest.equalsIgnoreCase("IT")) {
-				return "Choose Computer Diploma, Web Designing, Basic Programming, Polytechnic CSE.";
-			} else {
-				return "Choose Intermediate, ITI, Polytechnic, or Government job preparation.";
-			}
-		}
+    public long get12thCount() {
+        return repository.countByQualification("12th");
+    }
 
-		if (q.equalsIgnoreCase("12th")) {
-			if (interest.equalsIgnoreCase("Engineering")) {
-				return "Choose B.Tech, Diploma lateral entry, B.Sc Computer Science.";
-			} else if (interest.equalsIgnoreCase("Medical")) {
-				return "Choose MBBS, B.Pharmacy, Nursing, Physiotherapy, Lab Technician.";
-			} else if (interest.equalsIgnoreCase("Commerce")) {
-				return "Choose B.Com, BBA, CA Foundation, Banking courses.";
-			} else if (interest.equalsIgnoreCase("IT")) {
-				return "Choose BCA, B.Sc Computers, Java Full Stack, Python, Data Analytics.";
-			} else {
-				return "Choose Degree, Government exams, Skill development courses.";
-			}
-		}
+    public long getDiplomaCount() {
+        return repository.countByQualification("Diploma");
+    }
 
-		if (q.equalsIgnoreCase("Diploma")) {
-			return "Choose B.Tech lateral entry, Software courses, Apprenticeship, Technical jobs.";
-		}
+    public long getDegreeCount() {
+        return repository.countByQualification("Degree");
+    }
 
-		if (q.equalsIgnoreCase("Degree")) {
-			return "Choose MCA, MBA, M.Tech, Software Developer jobs, Government exams.";
-		}
+    // Search
+    public List<Student> searchStudents(String keyword) {
+        if (keyword == null || keyword.trim().isEmpty()) {
+            return repository.findAll();
+        }
 
-		return "Please select valid qualification.";
-	}
+        List<Student> byName =
+                repository.findByNameContainingIgnoreCase(keyword);
+
+        if (!byName.isEmpty()) {
+            return byName;
+        }
+
+        List<Student> byQualification =
+                repository.findByQualificationContainingIgnoreCase(keyword);
+
+        if (!byQualification.isEmpty()) {
+            return byQualification;
+        }
+
+        return repository.findByInterestContainingIgnoreCase(keyword);
+    }
+
+    // Advanced career suggestion
+    public String getCareerSuggestion(Student student) {
+
+        String q = student.getQualification();
+        String interest = student.getInterest();
+        double percentage = student.getPercentage();
+
+        if (q.equalsIgnoreCase("10th")) {
+
+            if (percentage >= 85) {
+                if (interest.equalsIgnoreCase("Engineering")) {
+                    return "Excellent score! Choose MPC Intermediate with IIT/JEE foundation or Polytechnic CSE/ECE.";
+                } else if (interest.equalsIgnoreCase("Medical")) {
+                    return "Excellent score! Choose BiPC Intermediate with NEET foundation.";
+                } else if (interest.equalsIgnoreCase("IT")) {
+                    return "Choose Polytechnic CSE, Computer Diploma, Web Development, and Java/Python basics.";
+                }
+            }
+
+            if (percentage >= 60) {
+                return "Good score! Choose Intermediate, Polytechnic, ITI, or skill-based courses based on your interest.";
+            }
+
+            return "Focus on skill-based courses like ITI, Polytechnic, Computer Basics, and improve academic foundation.";
+        }
+
+        if (q.equalsIgnoreCase("12th")) {
+
+            if (percentage >= 85) {
+                if (interest.equalsIgnoreCase("Engineering")) {
+                    return "Excellent score! Choose B.Tech CSE/ECE/AI or prepare for JEE/EAMCET.";
+                } else if (interest.equalsIgnoreCase("Medical")) {
+                    return "Excellent score! Choose MBBS, B.Pharmacy, Nursing, Physiotherapy, or NEET preparation.";
+                } else if (interest.equalsIgnoreCase("IT")) {
+                    return "Choose BCA, B.Sc Computers, Java Full Stack, Python, Data Analytics, or Cloud Computing.";
+                } else if (interest.equalsIgnoreCase("Commerce")) {
+                    return "Choose B.Com, BBA, CA Foundation, Banking, Finance, or Business Analytics.";
+                }
+            }
+
+            if (percentage >= 60) {
+                return "Good score! Choose Degree, BCA, B.Com, BBA, skill courses, or government exam preparation.";
+            }
+
+            return "Choose job-oriented degree courses, diploma courses, computer courses, or skill development programs.";
+        }
+
+        if (q.equalsIgnoreCase("Diploma")) {
+
+            if (percentage >= 75) {
+                return "Great! Choose B.Tech lateral entry, software development, apprenticeships, or technical government jobs.";
+            }
+
+            return "Choose technical jobs, apprenticeship, certification courses, AutoCAD, Java, Python, or hardware/networking.";
+        }
+
+        if (q.equalsIgnoreCase("Degree")) {
+
+            if (percentage >= 70) {
+                if (interest.equalsIgnoreCase("IT")) {
+                    return "Choose Java Full Stack, Spring Boot, React, SQL, Git, and apply for Software Developer jobs.";
+                }
+
+                return "Choose MCA, MBA, M.Tech, government exams, internships, or placement preparation.";
+            }
+
+            return "Improve skills with Java, SQL, Web Development, Communication Skills, and prepare for entry-level jobs.";
+        }
+
+        return "Please select valid qualification.";
+    }
 }

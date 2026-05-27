@@ -8,7 +8,9 @@
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
+
     <div>
         <h1>Student Career Guidance System</h1>
         <p>For 10th, 12th, Diploma and Degree completed students</p>
@@ -20,12 +22,45 @@
                th:value="${_csrf.token}">
         <button type="submit" class="logout-btn">Logout</button>
     </form>
+
 </div>
 
+<!-- DASHBOARD CARDS -->
+<div class="dashboard">
+
+    <div class="dash-card">
+        <h3>Total Students</h3>
+        <span th:text="${totalStudents}">0</span>
+    </div>
+
+    <div class="dash-card">
+        <h3>10th Students</h3>
+        <span th:text="${tenthCount}">0</span>
+    </div>
+
+    <div class="dash-card">
+        <h3>12th Students</h3>
+        <span th:text="${twelfthCount}">0</span>
+    </div>
+
+    <div class="dash-card">
+        <h3>Diploma Students</h3>
+        <span th:text="${diplomaCount}">0</span>
+    </div>
+
+    <div class="dash-card">
+        <h3>Degree Students</h3>
+        <span th:text="${degreeCount}">0</span>
+    </div>
+
+</div>
+
+<!-- MAIN SECTION -->
 <div class="main">
 
+    <!-- STUDENT FORM -->
     <div class="card">
-        <h2>Register Student</h2>
+        <h2>Register / Update Student</h2>
 
         <form th:action="@{/save}" th:object="${student}" method="post">
 
@@ -35,11 +70,20 @@
 
             <input type="hidden" th:field="*{id}">
 
-            <input type="text" th:field="*{name}" placeholder="Student Name" required>
+            <input type="text"
+                   th:field="*{name}"
+                   placeholder="Student Name"
+                   required>
 
-            <input type="email" th:field="*{email}" placeholder="Email" required>
+            <input type="email"
+                   th:field="*{email}"
+                   placeholder="Email"
+                   required>
 
-            <input type="text" th:field="*{phone}" placeholder="Phone Number" required>
+            <input type="text"
+                   th:field="*{phone}"
+                   placeholder="Phone Number"
+                   required>
 
             <select th:field="*{qualification}" required>
                 <option value="">Select Qualification</option>
@@ -49,7 +93,11 @@
                 <option value="Degree">Degree Completed</option>
             </select>
 
-            <input type="number" step="0.01" th:field="*{percentage}" placeholder="Percentage" required>
+            <input type="number"
+                   step="0.01"
+                   th:field="*{percentage}"
+                   placeholder="Percentage"
+                   required>
 
             <select th:field="*{interest}" required>
                 <option value="">Select Interest</option>
@@ -60,22 +108,57 @@
                 <option value="Government Jobs">Government Jobs</option>
             </select>
 
-            <button type="submit">Get Career Suggestion</button>
+            <button type="submit">
+                Get Career Suggestion
+            </button>
+
         </form>
     </div>
 
+    <!-- CAREER SUGGESTION -->
     <div class="card suggestion" th:if="${suggestion}">
+
         <h2>Career Suggestion</h2>
-        <h3 th:text="'Student: ' + ${studentName}"></h3>
-        <p th:text="${suggestion}"></p>
+
+        <h3 th:text="'Student: ' + ${studentName}">
+            Student Name
+        </h3>
+
+        <p th:text="${suggestion}">
+            Suggestion will appear here.
+        </p>
+
     </div>
 
 </div>
 
+<!-- TABLE SECTION -->
 <div class="table-card">
-    <h2>Registered Students</h2>
+
+    <div class="table-top">
+        <h2>Registered Students</h2>
+
+        <!-- SEARCH BAR -->
+        <form class="search-form" method="get" th:action="@{/}">
+
+            <input type="text"
+                   name="keyword"
+                   th:value="${keyword}"
+                   placeholder="Search by Name / Qualification / Interest">
+
+            <button type="submit">
+                Search
+            </button>
+
+            <a th:href="@{/}" class="clear-btn">
+                Clear
+            </a>
+
+        </form>
+    </div>
 
     <table>
+        <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -85,6 +168,15 @@
             <th>Percentage</th>
             <th>Interest</th>
             <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:if="${#lists.isEmpty(students)}">
+            <td colspan="8" class="no-data">
+                No students found
+            </td>
         </tr>
 
         <tr th:each="s : ${students}">
@@ -97,14 +189,22 @@
             <td th:text="${s.interest}"></td>
 
             <td>
-                <a class="edit" th:href="@{/edit/{id}(id=${s.id})}">Edit</a>
-                <a class="delete" th:href="@{/delete/{id}(id=${s.id})}"
+                <a class="edit"
+                   th:href="@{/edit/{id}(id=${s.id})}">
+                    Edit
+                </a>
+
+                <a class="delete"
+                   th:href="@{/delete/{id}(id=${s.id})}"
                    onclick="return confirm('Are you sure you want to delete this student?')">
                     Delete
                 </a>
             </td>
         </tr>
+
+        </tbody>
     </table>
+
 </div>
 
 </body>
