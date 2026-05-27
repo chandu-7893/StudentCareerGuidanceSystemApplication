@@ -1,0 +1,141 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ===== BACKGROUND (Meta + Instagram style gradient) ===== */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #eef3ff, #f9f9ff, #fce7f3);
+}
+
+/* ===== PAGE WRAPPER ===== */
+.auth-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== AUTH CARD (Glassmorphism) ===== */
+.auth-card {
+  width: 370px;
+  padding: 30px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== TITLE ===== */
+.auth-card h1 {
+  font-size: 26px;
+  margin-bottom: 6px;
+  background: linear-gradient(90deg, #1877f2, #e1306c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.auth-card p {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* ===== INPUT FIELDS ===== */
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.3s;
+  background: #fff;
+  font-size: 14px;
+}
+
+.auth-card input:focus {
+  border-color: #1877f2;
+  box-shadow: 0 0 8px rgba(24, 119, 242, 0.2);
+}
+
+/* ===== BUTTON (Instagram gradient style) ===== */
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(90deg, #1877f2, #e1306c);
+  transition: 0.3s;
+  margin-top: 5px;
+}
+
+.auth-card button:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+/* ===== LINKS ===== */
+.auth-card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #1877f2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-card a:hover {
+  text-decoration: underline;
+}
+
+/* ===== HEAD TEXT ===== */
+.auth-card h4 {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #444;
+}
+
+/* ===== OPTIONAL ALERT STYLES (if you use later) ===== */
+.success {
+  background: #e6ffed;
+  color: #1a7f37;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 10px;
+  border: 1px solid #b7f5c2;
+}
+
+.error {
+  background: #ffe6e6;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 10px;
+  border: 1px solid #ffb3b3;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .auth-card {
+    width: 90%;
+    padding: 20px;
+  }
+}
