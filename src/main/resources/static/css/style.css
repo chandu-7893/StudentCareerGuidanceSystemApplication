@@ -1,0 +1,226 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:'Poppins',sans-serif;
+}
+
+body{
+ background:linear-gradient(135deg,hashtag#141E30,hashtag#243B55);
+ min-height:100vh;
+ color:white;
+}
+
+/* Header */
+
+.header{
+ text-align:center;
+ padding:35px;
+ animation:fadeDown 1s ease;
+}
+
+.header h1{
+ font-size:42px;
+ font-weight:700;
+ background:linear-gradient(to right,hashtag#00dbde,hashtag#fc00ff);
+ -webkit-background-clip:text;
+ color:transparent;
+}
+
+.header p{
+ color:hashtag#d1d1d1;
+ margin-top:10px;
+}
+
+/* Layout */
+
+.main{
+ display:flex;
+ justify-content:center;
+ gap:30px;
+ flex-wrap:wrap;
+ padding:20px;
+}
+
+/* Glass Card */
+
+.card,.table-card{
+ background:rgba(255,255,255,0.08);
+ backdrop-filter:blur(14px);
+ border:1px solid rgba(255,255,255,0.15);
+ border-radius:22px;
+ padding:30px;
+ box-shadow:0 10px 40px rgba(0,0,0,0.3);
+ transition:0.4s ease;
+ animation:fadeUp 1s ease;
+}
+
+.card{
+ width:430px;
+}
+
+.card:hover,
+.table-card:hover{
+ transform:translateY(-10px);
+ box-shadow:0 15px 45px rgba(0,255,255,0.25);
+}
+
+/* Suggestion Card */
+
+.suggestion{
+ background:linear-gradient(135deg,hashtag#00c853,hashtag#43a047);
+}
+
+/* Inputs */
+
+input,select{
+ width:100%;
+ padding:15px;
+ margin:12px 0;
+ border:none;
+ border-radius:14px;
+ background:rgba(255,255,255,0.12);
+ color:white;
+ font-size:15px;
+ outline:none;
+ transition:0.3s;
+}
+
+input::placeholder{
+ color:hashtag#ddd;
+}
+
+select option{
+ color:black;
+}
+
+input:focus,
+select:focus{
+ transform:scale(1.03);
+ box-shadow:0 0 15px hashtag#00e5ff;
+}
+
+/* Modern Button */
+
+button{
+ width:100%;
+ padding:15px;
+ border:none;
+ border-radius:15px;
+ background:linear-gradient(90deg,hashtag#00dbde,hashtag#fc00ff);
+ color:white;
+ font-size:17px;
+ font-weight:600;
+ cursor:pointer;
+ transition:0.4s;
+}
+
+button:hover{
+ transform:translateY(-4px);
+ box-shadow:0 10px 30px rgba(252,0,255,0.4);
+}
+
+/* Table */
+
+.table-card{
+ width:92%;
+ margin:30px auto;
+}
+
+table{
+ width:100%;
+ border-collapse:collapse;
+ overflow:hidden;
+}
+
+th{
+ background:rgba(255,255,255,0.15);
+ padding:15px;
+}
+
+td{
+ padding:14px;
+ text-align:center;
+ border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+tr{
+ transition:0.3s;
+}
+
+tr:hover{
+ background:rgba(255,255,255,0.08);
+ transform:scale(1.01);
+}
+
+/* Buttons */
+
+.edit,.delete{
+ text-decoration:none;
+ padding:10px 15px;
+ border-radius:12px;
+ color:white;
+ transition:0.3s;
+}
+
+.edit{
+ background:linear-gradient(45deg,hashtag#00c853,hashtag#00e676);
+}
+
+.delete{
+ background:linear-gradient(45deg,hashtag#ff1744,hashtag#ff5252);
+}
+
+.edit:hover,
+.delete:hover{
+ transform:scale(1.08);
+}
+
+/* Animations */
+
+@keyframes fadeDown{
+ from{
+ opacity:0;
+ transform:translateY(-60px);
+ }
+ to{
+ opacity:1;
+ transform:translateY(0);
+ }
+}
+
+@keyframes fadeUp{
+ from{
+ opacity:0;
+ transform:translateY(50px);
+ }
+ to{
+ opacity:1;
+ transform:translateY(0);
+ }
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+ .main{
+ flex-direction:column;
+ align-items:center;
+ }
+
+ .card,
+ .table-card{
+ width:95%;
+ }
+
+ table{
+ font-size:13px;
+ overflow-x:auto;
+ display:block;
+ }
+
+}
