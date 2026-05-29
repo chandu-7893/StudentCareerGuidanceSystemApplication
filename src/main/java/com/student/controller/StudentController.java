@@ -42,24 +42,28 @@ public class StudentController {
 	    this.collegeService = collegeService;
 	    this.emailService = emailService;
 	}
-	
 	@GetMapping("/email-report/{id}")
 	public String emailReport(@PathVariable Long id,
 	                          Principal principal) {
 
-	    Student student = service.getStudentById(id);
+	    try {
+	        Student student = service.getStudentById(id);
 
-	    if (student == null ||
-	        student.getUsername() == null ||
-	        !student.getUsername().equals(principal.getName())) {
-	        return "redirect:/";
+	        if (student == null ||
+	            student.getUsername() == null ||
+	            !student.getUsername().equals(principal.getName())) {
+	            return "redirect:/";
+	        }
+
+	        emailService.sendCareerReport(student);
+
+	        return "redirect:/roadmap/" + id + "?emailSent=true";
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return "redirect:/roadmap/" + id + "?emailFailed=true";
 	    }
-
-	    emailService.sendCareerReport(student);
-
-	    return "redirect:/roadmap/" + id + "?emailSent=true";
 	}
-
 	@GetMapping("/")
 	public String home(@RequestParam(required = false) String keyword, Principal principal, Model model) {
 
