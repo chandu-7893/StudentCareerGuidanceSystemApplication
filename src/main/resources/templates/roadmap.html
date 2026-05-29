@@ -34,7 +34,7 @@
 		<div class="profile-glow"></div>
 
 		<img th:if="${student.photo != null}"
-		     th:src="@{'/uploads/' + ${student.photo}}"
+		     th:src="${student.photo}"
 		     class="profile-img"
 		     alt="Student Photo">
 
