@@ -1,20 +1,22 @@
 package com.student.service;
 
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.resend.Resend;
+import com.resend.services.emails.model.CreateEmailOptions;
+import com.resend.services.emails.model.CreateEmailResponse;
 import com.student.entity.Student;
 
 @Service
 public class EmailService {
 
-    private final JavaMailSender mailSender;
+    @Value("${resend.api.key}")
+    private String apiKey;
+
     private final StudentService studentService;
 
-    public EmailService(JavaMailSender mailSender,
-                        StudentService studentService) {
-        this.mailSender = mailSender;
+    public EmailService(StudentService studentService) {
         this.studentService = studentService;
     }
 
@@ -24,43 +26,37 @@ public class EmailService {
             throw new RuntimeException("Student email is empty");
         }
 
-        String subject = "Your Career Guidance Report";
+        if (apiKey == null || apiKey.isBlank()) {
+            throw new RuntimeException("Resend API key is missing");
+        }
 
         String body =
-                "Hello " + student.getName() + ",\n\n" +
-                "Here is your career guidance report.\n\n" +
+                "<h2>Hello " + student.getName() + "</h2>" +
+                "<p>Here is your career guidance report.</p>" +
+                "<p><b>Qualification:</b> " + student.getQualification() + "</p>" +
+                "<p><b>Percentage:</b> " + student.getPercentage() + "%</p>" +
+                "<p><b>Interest:</b> " + student.getInterest() + "</p>" +
+                "<h3>Career Suggestion</h3>" +
+                "<p>" + studentService.getCareerSuggestion(student) + "</p>" +
+                "<h3>Career Roadmap</h3>" +
+                "<p>" + studentService.getCareerRoadmap(student) + "</p>" +
+                "<br><p>Thank you,<br>Student Career Guidance System</p>";
 
-                "Qualification: " + student.getQualification() + "\n" +
-                "Percentage: " + student.getPercentage() + "%\n" +
-                "Interest: " + student.getInterest() + "\n\n" +
+        Resend resend = new Resend(apiKey);
 
-                "Career Suggestion:\n" +
-                studentService.getCareerSuggestion(student) + "\n\n" +
-
-                "Career Roadmap:\n" +
-                studentService.getCareerRoadmap(student) + "\n\n" +
-
-                "Thank you,\n" +
-                "Student Career Guidance System";
+        CreateEmailOptions params = CreateEmailOptions.builder()
+                .from("Student Career Guidance <onboarding@resend.dev>")
+                .to(student.getEmail().trim())
+                .subject("Your Career Guidance Report")
+                .html(body)
+                .build();
 
         try {
-            SimpleMailMessage message = new SimpleMailMessage();
-
-            message.setFrom("sangireddyreddy789@gmail.com");
-            message.setTo(student.getEmail().trim());
-            message.setSubject(subject);
-            message.setText(body);
-
-            System.out.println("Sending email to: " + student.getEmail());
-
-            mailSender.send(message);
-
-            System.out.println("Email sent successfully to: " + student.getEmail());
-
+            CreateEmailResponse response = resend.emails().send(params);
+            System.out.println("Email sent successfully. ID: " + response.getId());
         } catch (Exception e) {
-            System.out.println("Email sending failed: " + e.getMessage());
             e.printStackTrace();
-            throw new RuntimeException("Email sending failed", e);
+            throw new RuntimeException("Email sending failed: " + e.getMessage());
         }
     }
 }
