@@ -18,6 +18,43 @@ public class College {
     private String fees;
     private String qualification;
     private String website;
+    
+    private String imageUrl;
+    private String placementRate;
+    private String averagePackage;
+    
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getPlacementRate() {
+        return placementRate;
+    }
+
+    public void setPlacementRate(String placementRate) {
+        this.placementRate = placementRate;
+    }
+
+    public String getAveragePackage() {
+        return averagePackage;
+    }
+
+    public void setAveragePackage(String averagePackage) {
+        this.averagePackage = averagePackage;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
 
     public Long getId() {
         return id;
@@ -65,13 +102,5 @@ public class College {
 
     public void setQualification(String qualification) {
         this.qualification = qualification;
-    }
-
-    public String getWebsite() {
-        return website;
-    }
-
-    public void setWebsite(String website) {
-        this.website = website;
     }
 }

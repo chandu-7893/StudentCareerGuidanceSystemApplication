@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import com.student.entity.Student;
 import com.student.repository.StudentRepository;
 
+
+import java.util.ArrayList;
+import com.student.dto.CareerMatch;
+
 @Service
 public class StudentService {
 
@@ -50,6 +54,29 @@ public class StudentService {
 
     public long getDegreeCount() {
         return repository.countByQualification("Degree");
+    }
+    
+    public List<Student> getStudentsByUsername(String username) {
+        return repository.findByUsername(username);
+    }
+    
+    
+    public List<Student> searchStudentsByUsername(String username, String keyword) {
+
+        List<Student> studentList = repository.findByUsername(username);
+
+        if (keyword == null || keyword.trim().isEmpty()) {
+            return studentList;
+        }
+
+        String key = keyword.toLowerCase();
+
+        return studentList.stream()
+                .filter(s ->
+                        s.getName().toLowerCase().contains(key)
+                        || s.getQualification().toLowerCase().contains(key)
+                        || s.getInterest().toLowerCase().contains(key))
+                .toList();
     }
 
     public List<Student> searchStudents(String keyword) {
@@ -332,5 +359,137 @@ public class StudentService {
                 ↓
                 Career Growth
                 """;
+    }
+    
+    
+    public List<CareerMatch> getAiCareerMatches(Student student) {
+
+        List<CareerMatch> matches = new ArrayList<>();
+
+        String qualification = student.getQualification();
+        String interest = student.getInterest();
+        double percentage = student.getPercentage();
+
+        if (interest.equalsIgnoreCase("IT")) {
+
+            if (qualification.equalsIgnoreCase("Degree")
+                    || qualification.equalsIgnoreCase("12th")
+                    || qualification.equalsIgnoreCase("Diploma")) {
+
+                matches.add(new CareerMatch(
+                        "Java Developer",
+                        percentage >= 75 ? 95 : 85,
+                        "Best for students interested in backend development using Java, Spring Boot, SQL, and APIs."));
+
+                matches.add(new CareerMatch(
+                        "Full Stack Developer",
+                        percentage >= 70 ? 92 : 82,
+                        "Good path if you want to build complete web applications using Java, React, HTML, CSS, and MySQL."));
+
+                matches.add(new CareerMatch(
+                        "Cloud Engineer",
+                        percentage >= 80 ? 88 : 75,
+                        "Suitable for students interested in cloud platforms, deployment, servers, and DevOps basics."));
+
+                matches.add(new CareerMatch(
+                        "Data Analyst",
+                        percentage >= 70 ? 84 : 72,
+                        "Useful career path for students interested in data, SQL, Excel, dashboards, and reports."));
+
+                matches.add(new CareerMatch(
+                        "Software Tester",
+                        percentage >= 60 ? 82 : 74,
+                        "Good entry-level IT role focused on manual testing, automation testing, Selenium, and QA process."));
+            }
+        }
+
+        else if (interest.equalsIgnoreCase("Engineering")) {
+
+            matches.add(new CareerMatch(
+                    "Software Engineer",
+                    percentage >= 80 ? 92 : 82,
+                    "Best choice for engineering students interested in coding, problem solving, and application development."));
+
+            matches.add(new CareerMatch(
+                    "Core Engineer",
+                    percentage >= 75 ? 88 : 78,
+                    "Suitable for students interested in mechanical, electrical, civil, or electronics engineering fields."));
+
+            matches.add(new CareerMatch(
+                    "AI / ML Engineer",
+                    percentage >= 85 ? 90 : 76,
+                    "Recommended for high-scoring students interested in artificial intelligence, Python, and machine learning."));
+
+            matches.add(new CareerMatch(
+                    "DevOps Engineer",
+                    percentage >= 75 ? 86 : 74,
+                    "Good for students interested in servers, deployment, CI/CD, Linux, Docker, and cloud platforms."));
+        }
+
+        else if (interest.equalsIgnoreCase("Medical")) {
+
+            matches.add(new CareerMatch(
+                    "Doctor",
+                    percentage >= 85 ? 95 : 80,
+                    "Best path for students interested in MBBS, NEET preparation, and healthcare services."));
+
+            matches.add(new CareerMatch(
+                    "Pharmacist",
+                    percentage >= 70 ? 88 : 78,
+                    "Good career option through B.Pharmacy and medicine-related fields."));
+
+            matches.add(new CareerMatch(
+                    "Nursing Officer",
+                    percentage >= 65 ? 85 : 76,
+                    "Suitable for students interested in patient care and hospital services."));
+
+            matches.add(new CareerMatch(
+                    "Lab Technician",
+                    percentage >= 60 ? 82 : 72,
+                    "Good practical medical career path with diploma or degree-based lab training."));
+        }
+
+        else if (interest.equalsIgnoreCase("Commerce")) {
+
+            matches.add(new CareerMatch(
+                    "Accountant",
+                    percentage >= 70 ? 90 : 78,
+                    "Good career for students interested in accounts, taxation, finance, and bookkeeping."));
+
+            matches.add(new CareerMatch(
+                    "Banking Professional",
+                    percentage >= 75 ? 88 : 76,
+                    "Suitable for students interested in banking exams, finance, and customer services."));
+
+            matches.add(new CareerMatch(
+                    "Business Analyst",
+                    percentage >= 80 ? 86 : 72,
+                    "Best for students interested in business, data, communication, and decision making."));
+
+            matches.add(new CareerMatch(
+                    "CA / CMA Foundation",
+                    percentage >= 85 ? 92 : 75,
+                    "Recommended for high-scoring commerce students interested in professional finance careers."));
+        }
+
+        else {
+
+            matches.add(new CareerMatch(
+                    "Government Job Preparation",
+                    percentage >= 70 ? 85 : 75,
+                    "Good option for students interested in public sector jobs, SSC, Railways, Banking, and state exams."));
+
+            matches.add(new CareerMatch(
+                    "Skill-Based Career",
+                    percentage >= 60 ? 82 : 74,
+                    "Recommended path through ITI, diploma, computer courses, communication skills, and practical training."));
+
+            matches.add(new CareerMatch(
+                    "Entrepreneurship",
+                    percentage >= 65 ? 80 : 70,
+                    "Good for students interested in business, self-employment, freelancing, and startups."));
+        }
+
+        return matches;
     }
 }

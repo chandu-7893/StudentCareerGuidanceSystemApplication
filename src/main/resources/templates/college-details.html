@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>College Details</title>
+    <link rel="stylesheet" th:href="@{/css/college-details.css}">
+</head>
+
+<body>
+
+<div class="college-page">
+
+    <a th:href="@{/}" class="back-btn">← Back to Dashboard</a>
+
+    <div class="college-hero">
+
+        <img th:if="${college.imageUrl != null}"
+             th:src="${college.imageUrl}"
+             alt="College Image">
+
+        <div class="hero-content">
+            <h1 th:text="${college.collegeName}">College Name</h1>
+            <p th:text="${college.location}">Location</p>
+        </div>
+
+    </div>
+
+    <div class="details-grid">
+
+        <div class="detail-card">
+            <h3>🎓 Course</h3>
+            <p th:text="${college.course}"></p>
+        </div>
+
+        <div class="detail-card">
+            <h3>💰 Fees</h3>
+            <p th:text="${college.fees}"></p>
+        </div>
+
+        <div class="detail-card">
+            <h3>📈 Placement Rate</h3>
+            <p th:text="${college.placementRate}"></p>
+        </div>
+
+        <div class="detail-card">
+            <h3>💼 Average Package</h3>
+            <p th:text="${college.averagePackage}"></p>
+        </div>
+
+    </div>
+
+    <div class="action-box">
+
+        <a th:href="${college.website}"
+           target="_blank"
+           class="visit-btn">
+            Visit Website
+        </a>
+
+        <a href="#"
+           class="apply-btn">
+            Apply Now
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

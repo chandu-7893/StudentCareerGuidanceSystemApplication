@@ -18,4 +18,7 @@ public class CollegeService {
 	        return repository.findByQualification(
 	                qualification);
 	    }
+	    public College getCollegeById(Long id) {
+	        return repository.findById(id).orElse(null);
+	    }
 }

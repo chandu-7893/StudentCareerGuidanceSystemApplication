@@ -723,3 +723,240 @@ tbody tr:hover{
     background: #1e40af;
     transform: translateY(-3px);
 }
+
+
+.roadmap-btn {
+    display: inline-block;
+    background: #7c3aed;
+    color: white !important;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.roadmap-btn:hover {
+    background: #6d28d9;
+    transform: translateY(-2px);
+}
+
+.chart-section {
+    margin: 20px;
+}
+
+.chart-card {
+    background: rgba(255,255,255,.88);
+    backdrop-filter: blur(14px);
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 0 16px 40px rgba(15,23,42,.12);
+    text-align: center;
+}
+
+.chart-card h2 {
+    color: #1d4ed8;
+    margin-bottom: 20px;
+}
+
+.chart-card canvas {
+    max-width: 420px;
+    max-height: 420px;
+    margin: auto;
+}
+
+.theme-toggle {
+    width: auto;
+    background: #0f172a;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+.dark-mode {
+    background: linear-gradient(135deg, #020617, #0f172a);
+    color: #e5e7eb;
+}
+
+.dark-mode .card,
+.dark-mode .table-card,
+.dark-mode .dash-card,
+.dark-mode .chart-card {
+    background: rgba(15, 23, 42, 0.92);
+    color: #e5e7eb;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.dark-mode h2,
+.dark-mode h3 {
+    color: #38bdf8;
+}
+
+.dark-mode input,
+.dark-mode select {
+    background: #020617;
+    color: white;
+    border-color: #334155;
+}
+
+.dark-mode table {
+    color: #e5e7eb;
+}
+
+.dark-mode tbody tr:nth-child(even) {
+    background: #111827;
+}
+
+.dark-mode tbody tr:hover {
+    background: #1e293b;
+}
+
+.header > * {
+    position: relative;
+    z-index: 2;
+}
+
+.logout-btn {
+    position: relative;
+    z-index: 999;
+    pointer-events: auto;
+}
+
+.logout-form {
+    position: relative;
+    z-index: 999;
+}
+
+
+body {
+    overflow-x: hidden;
+}
+
+.chart-section {
+    margin: 20px auto;
+    width: 95%;
+}
+
+.chart-card {
+    width: 100%;
+    min-height: 360px;
+    padding: 25px;
+}
+
+.chart-card canvas {
+    max-width: 300px !important;
+    max-height: 300px !important;
+    margin: 0 auto;
+    display: block;
+}
+
+.main {
+    width: 95%;
+    margin: 25px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.card {
+    width: 100%;
+    overflow: hidden;
+}
+
+input,
+select {
+    max-width: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    position: relative;
+    z-index: 9999;
+}
+
+.logout-form {
+    position: relative;
+    z-index: 9999;
+}
+
+.logout-btn {
+    position: relative;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.chart-section {
+    width: 95%;
+    margin: 20px auto;
+}
+
+.chart-card {
+    height: 420px;
+    padding: 25px;
+    border-radius: 25px;
+}
+
+.chart-box {
+    width: 100%;
+    height: 320px;
+}
+
+.chart-card canvas {
+    width: 100% !important;
+    height: 320px !important;
+}
+
+.action-buttons {
+    white-space: nowrap;
+}
+
+.edit,
+.roadmap-btn,
+.delete {
+    display: inline-block;
+    min-width: 82px;
+    text-align: center;
+    margin: 4px;
+}
+
+.education-title {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: #2563eb;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+#educationSection {
+    margin-top: 15px;
+}
+
+#interSection,
+#degreeSection {
+    display: none;
+}
+
+.section-label {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding: 12px 18px;
+    border-radius: 14px;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    color: white;
+    font-weight: 800;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(37,99,235,.25);
+}

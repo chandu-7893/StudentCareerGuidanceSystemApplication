@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top left, rgba(37,99,235,.45), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(124,58,237,.40), transparent 35%),
+        linear-gradient(135deg, #020617, #0f172a);
+}
+
+/* PAGE */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* FLOATING BACKGROUND CIRCLES */
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: floatCircle 6s ease-in-out infinite;
+}
+
+.circle-one {
+    width: 230px;
+    height: 230px;
+    background: rgba(37,99,235,.35);
+    top: 12%;
+    left: 14%;
+}
+
+.circle-two {
+    width: 280px;
+    height: 280px;
+    background: rgba(124,58,237,.35);
+    right: 12%;
+    bottom: 10%;
+    animation-delay: 1.4s;
+}
+
+/* CARD */
+
+.auth-card {
+    width: 390px;
+    padding: 38px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.20);
+    box-shadow: 0 25px 70px rgba(0,0,0,.45);
+    color: white;
+    text-align: center;
+    animation: cardEntry .8s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.register-card {
+    width: 420px;
+}
+
+.avatar {
+    width: 82px;
+    height: 82px;
+    margin: auto;
+    margin-bottom: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    box-shadow: 0 15px 35px rgba(37,99,235,.45);
+    animation: avatarFloat 3s ease-in-out infinite;
+}
+
+.auth-card h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.auth-card p {
+    color: #cbd5e1;
+    margin-bottom: 24px;
+}
+
+/* INPUT */
+
+.input-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.20);
+    border-radius: 16px;
+    padding: 0 15px;
+    margin-bottom: 16px;
+    transition: .3s;
+}
+
+.input-box:focus-within {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 4px rgba(96,165,250,.18);
+    transform: translateY(-2px);
+}
+
+.input-box span {
+    font-size: 20px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 15px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+}
+
+.input-box input::placeholder {
+    color: #cbd5e1;
+}
+
+/* BUTTON */
+
+.auth-card button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 4px;
+    border: none;
+    border-radius: 17px;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+    font-size: 17px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 15px 35px rgba(37,99,235,.40);
+}
+
+.auth-card button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 45px rgba(124,58,237,.45);
+}
+
+.auth-card h4 {
+    margin-top: 22px;
+    color: #e5e7eb;
+}
+
+.auth-card a {
+    display: inline-block;
+    margin-top: 9px;
+    color: #93c5fd;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.auth-card a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* ALERTS */
+
+.error,
+.success {
+    padding: 12px;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.error {
+    background: rgba(239,68,68,.18);
+    color: #fecaca;
+    border: 1px solid rgba(239,68,68,.35);
+}
+
+.success {
+    background: rgba(34,197,94,.18);
+    color: #bbf7d0;
+    border: 1px solid rgba(34,197,94,.35);
+}
+
+/* ANIMATIONS */
+
+@keyframes cardEntry {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes avatarFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes floatCircle {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-25px) scale(1.05);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width: 500px) {
+    .auth-card,
+    .register-card {
+        width: 92%;
+        padding: 30px 24px;
+    }
+
+    .auth-card h1 {
+        font-size: 27px;
+    }
+}

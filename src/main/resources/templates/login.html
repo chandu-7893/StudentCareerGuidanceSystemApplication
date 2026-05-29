@@ -3,18 +3,24 @@
 
 <head>
     <title>Student Login</title>
-    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
 </head>
 
 <body>
 
 <div class="auth-page">
 
+    <div class="circle circle-one"></div>
+    <div class="circle circle-two"></div>
+
     <div class="auth-card">
 
-        <h1>Student Login</h1>
+        <div class="avatar">
+            🎓
+        </div>
 
-        <p>Login with your registered details</p>
+        <h1>Welcome Back</h1>
+        <p>Login to view your career roadmap</p>
 
         <div class="success" th:if="${param.registered}">
             Registration successful. Please login.
@@ -32,17 +38,23 @@
 
             <input type="hidden"
                    th:name="${_csrf.parameterName}"
-                   th:value="${_csrf.token}" />
+                   th:value="${_csrf.token}">
 
-            <input type="text"
-                   name="username"
-                   placeholder="Username"
-                   required>
+            <div class="input-box">
+                <span>👤</span>
+                <input type="text"
+                       name="username"
+                       placeholder="Username"
+                       required>
+            </div>
 
-            <input type="password"
-                   name="password"
-                   placeholder="Password"
-                   required>
+            <div class="input-box">
+                <span>🔒</span>
+                <input type="password"
+                       name="password"
+                       placeholder="Password"
+                       required>
+            </div>
 
             <button type="submit">
                 Login
@@ -50,10 +62,10 @@
 
         </form>
 
-        <h4>New Student?</h4>
+        <h4>New student?</h4>
 
         <a th:href="@{/register}">
-            Register Here
+            Create Account
         </a>
 
     </div>
