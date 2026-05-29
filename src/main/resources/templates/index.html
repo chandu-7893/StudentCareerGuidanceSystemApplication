@@ -62,7 +62,10 @@
     <div class="card">
         <h2>Register / Update Student</h2>
 
-        <form th:action="@{/save}" th:object="${student}" method="post">
+        <form th:action="@{/save}"
+              th:object="${student}"
+              method="post"
+              enctype="multipart/form-data">
 
             <input type="hidden"
                    th:name="${_csrf.parameterName}"
@@ -84,6 +87,10 @@
                    th:field="*{phone}"
                    placeholder="Phone Number"
                    required>
+
+            <input type="file"
+                   name="imageFile"
+                   accept="image/*">
 
             <select th:field="*{qualification}" required>
                 <option value="">Select Qualification</option>
@@ -129,6 +136,87 @@
         </p>
 
     </div>
+	
+	<div class="card roadmap-card" th:if="${roadmap}">
+
+	    <div class="roadmap-header">
+	        <span class="roadmap-icon">🚀</span>
+	        <div>
+	            <h2>Personalized Career Roadmap</h2>
+	            <p>Step-by-step path designed for your career goal</p>
+	        </div>
+	    </div>
+
+	    <div class="roadmap-timeline">
+
+	        <div class="roadmap-step"
+	             th:each="step, iterStat : ${#strings.arraySplit(roadmap, '↓')}">
+
+	            <div class="step-number"
+	                 th:text="${iterStat.index + 1}">
+	                1
+	            </div>
+
+	            <div class="step-content">
+	                <h3 th:text="${#strings.trim(step)}">
+	                    Roadmap Step
+	                </h3>
+	            </div>
+
+	        </div>
+
+	    </div>
+		
+		<div class="college-section"
+		     th:if="${colleges}">
+
+		    <div class="section-heading">
+		        <h2>🏫 Recommended Colleges</h2>
+		        <p>Based on your qualification and career path</p>
+		    </div>
+
+		    <div class="college-grid">
+
+		        <div class="college-card"
+		             th:each="c : ${colleges}">
+
+		            <div class="college-badge">
+		                Recommended
+		            </div>
+
+		            <h3 th:text="${c.collegeName}">
+		                College Name
+		            </h3>
+
+		            <p>
+		                <strong>Course:</strong>
+		                <span th:text="${c.course}"></span>
+		            </p>
+
+		            <p>
+		                <strong>Location:</strong>
+		                <span th:text="${c.location}"></span>
+		            </p>
+
+		            <p>
+		                <strong>Fees:</strong>
+		                <span th:text="${c.fees}"></span>
+		            </p>
+
+		            <a th:if="${c.website != null}"
+		               th:href="${c.website}"
+		               target="_blank"
+		               class="college-link">
+		                Visit Website
+		            </a>
+
+		        </div>
+
+		    </div>
+
+		</div>
+
+	</div>
 
 </div>
 
@@ -161,6 +249,7 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>Photo</th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
@@ -174,13 +263,26 @@
         <tbody>
 
         <tr th:if="${#lists.isEmpty(students)}">
-            <td colspan="8" class="no-data">
+            <td colspan="9" class="no-data">
                 No students found
             </td>
         </tr>
 
         <tr th:each="s : ${students}">
+
             <td th:text="${s.id}"></td>
+
+            <td>
+                <img th:if="${s.photo != null}"
+                     th:src="@{'/uploads/' + ${s.photo}}"
+                     class="student-img"
+                     alt="Student Photo">
+
+                <span th:if="${s.photo == null}">
+                    No Photo
+                </span>
+            </td>
+
             <td th:text="${s.name}"></td>
             <td th:text="${s.email}"></td>
             <td th:text="${s.phone}"></td>

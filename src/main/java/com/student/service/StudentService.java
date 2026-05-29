@@ -32,7 +32,6 @@ public class StudentService {
         repository.deleteById(id);
     }
 
-    // Dashboard counts
     public long getTotalStudents() {
         return repository.count();
     }
@@ -53,8 +52,8 @@ public class StudentService {
         return repository.countByQualification("Degree");
     }
 
-    // Search
     public List<Student> searchStudents(String keyword) {
+
         if (keyword == null || keyword.trim().isEmpty()) {
             return repository.findAll();
         }
@@ -76,7 +75,6 @@ public class StudentService {
         return repository.findByInterestContainingIgnoreCase(keyword);
     }
 
-    // Advanced career suggestion
     public String getCareerSuggestion(Student student) {
 
         String q = student.getQualification();
@@ -146,5 +144,193 @@ public class StudentService {
         }
 
         return "Please select valid qualification.";
+    }
+
+    public String getCareerRoadmap(Student student) {
+
+        String q = student.getQualification();
+        String interest = student.getInterest();
+
+        if (q.equalsIgnoreCase("10th")
+                && interest.equalsIgnoreCase("Engineering")) {
+
+            return """
+                    10th Completed
+                    ↓
+                    MPC Intermediate
+                    ↓
+                    JEE / EAMCET Preparation
+                    ↓
+                    B.Tech CSE / ECE / Mechanical
+                    ↓
+                    Internship
+                    ↓
+                    Software / Core Engineering Job
+                    """;
+        }
+
+        if (q.equalsIgnoreCase("10th")
+                && interest.equalsIgnoreCase("Medical")) {
+
+            return """
+                    10th Completed
+                    ↓
+                    BiPC Intermediate
+                    ↓
+                    NEET Preparation
+                    ↓
+                    MBBS / BDS / Nursing / Pharmacy
+                    ↓
+                    Internship
+                    ↓
+                    Doctor / Medical Professional
+                    """;
+        }
+
+        if (q.equalsIgnoreCase("10th")
+                && interest.equalsIgnoreCase("IT")) {
+
+            return """
+                    10th Completed
+                    ↓
+                    Polytechnic CSE / Computer Diploma
+                    ↓
+                    Java / Python Basics
+                    ↓
+                    Web Development
+                    ↓
+                    Projects
+                    ↓
+                    Junior Developer
+                    """;
+        }
+
+        if (q.equalsIgnoreCase("12th")
+                && interest.equalsIgnoreCase("Engineering")) {
+
+            return """
+                    12th MPC Completed
+                    ↓
+                    Entrance Exam / EAMCET / JEE
+                    ↓
+                    B.Tech CSE / IT / ECE
+                    ↓
+                    Java Full Stack / Cloud / AI
+                    ↓
+                    Internship
+                    ↓
+                    Software Engineer
+                    """;
+        }
+
+        if (q.equalsIgnoreCase("12th")
+                && interest.equalsIgnoreCase("Medical")) {
+
+            return """
+                    12th BiPC Completed
+                    ↓
+                    NEET / State Medical Entrance
+                    ↓
+                    MBBS / B.Pharmacy / Nursing
+                    ↓
+                    Clinical Training
+                    ↓
+                    Medical Career
+                    """;
+        }
+
+        if (q.equalsIgnoreCase("12th")
+                && interest.equalsIgnoreCase("Commerce")) {
+
+            return """
+                    12th Commerce Completed
+                    ↓
+                    B.Com / BBA
+                    ↓
+                    CA Foundation / Banking / Finance
+                    ↓
+                    Internship
+                    ↓
+                    Accountant / Banking / Business Analyst
+                    """;
+        }
+
+        if (q.equalsIgnoreCase("12th")
+                && interest.equalsIgnoreCase("IT")) {
+
+            return """
+                    12th Completed
+                    ↓
+                    BCA / B.Sc Computers
+                    ↓
+                    Java Full Stack + SQL
+                    ↓
+                    React / Spring Boot Projects
+                    ↓
+                    Internship
+                    ↓
+                    Software Developer
+                    """;
+        }
+
+        if (q.equalsIgnoreCase("Diploma")) {
+
+            return """
+                    Diploma Completed
+                    ↓
+                    B.Tech Lateral Entry / Technical Certification
+                    ↓
+                    Industry Tools Training
+                    ↓
+                    Internship / Apprenticeship
+                    ↓
+                    Technical Job / Engineer
+                    """;
+        }
+
+        if (q.equalsIgnoreCase("Degree")
+                && interest.equalsIgnoreCase("IT")) {
+
+            return """
+                    Degree Completed
+                    ↓
+                    Java + Spring Boot
+                    ↓
+                    React + SQL
+                    ↓
+                    GitHub Projects
+                    ↓
+                    Internship
+                    ↓
+                    Software Developer
+                    """;
+        }
+
+        if (q.equalsIgnoreCase("Degree")) {
+
+            return """
+                    Degree Completed
+                    ↓
+                    MBA / MCA / M.Tech / Government Exams
+                    ↓
+                    Skill Development
+                    ↓
+                    Internship / Training
+                    ↓
+                    Career Growth
+                    """;
+        }
+
+        return """
+                Student
+                ↓
+                Skill Development
+                ↓
+                Professional Course
+                ↓
+                Internship
+                ↓
+                Career Growth
+                """;
     }
 }
