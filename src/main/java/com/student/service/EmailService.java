@@ -22,6 +22,14 @@ public class EmailService {
 
     public void sendCareerReport(Student student) {
 
+        System.out.println("===== EMAIL METHOD STARTED =====");
+
+        if (student == null) {
+            throw new RuntimeException("Student object is null");
+        }
+
+        System.out.println("Student email: " + student.getEmail());
+
         if (student.getEmail() == null || student.getEmail().trim().isEmpty()) {
             throw new RuntimeException("Student email is empty");
         }
@@ -29,6 +37,8 @@ public class EmailService {
         if (apiKey == null || apiKey.isBlank()) {
             throw new RuntimeException("Resend API key is missing");
         }
+
+        System.out.println("Resend key loaded: YES");
 
         String body =
                 "<h2>Hello " + student.getName() + "</h2>" +
@@ -42,19 +52,23 @@ public class EmailService {
                 "<p>" + studentService.getCareerRoadmap(student) + "</p>" +
                 "<br><p>Thank you,<br>Student Career Guidance System</p>";
 
-        Resend resend = new Resend(apiKey);
-
-        CreateEmailOptions params = CreateEmailOptions.builder()
-                .from("Student Career Guidance <onboarding@resend.dev>")
-                .to(student.getEmail().trim())
-                .subject("Your Career Guidance Report")
-                .html(body)
-                .build();
-
         try {
+            Resend resend = new Resend(apiKey);
+
+            CreateEmailOptions params = CreateEmailOptions.builder()
+                    .from("Student Career Guidance <onboarding@resend.dev>")
+                    .to(student.getEmail().trim())
+                    .subject("Your Career Guidance Report")
+                    .html(body)
+                    .build();
+
             CreateEmailResponse response = resend.emails().send(params);
-            System.out.println("Email sent successfully. ID: " + response.getId());
+
+            System.out.println("Email sent successfully");
+            System.out.println("Email ID: " + response.getId());
+
         } catch (Exception e) {
+            System.out.println("===== EMAIL ERROR =====");
             e.printStackTrace();
             throw new RuntimeException("Email sending failed: " + e.getMessage());
         }
