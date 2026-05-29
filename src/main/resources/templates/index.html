@@ -296,10 +296,15 @@
             <td th:text="${s.id}"></td>
 
             <td>
-                <img th:if="${s.photo != null}"
-                     th:src="@{'/uploads/' + ${s.photo}}"
-                     class="student-img"
-                     alt="Student Photo">
+				<img th:if="${s.photo != null}"
+				     th:src="${s.photo}"
+				     alt="Student Photo"
+				     class="student-img">
+
+				<div th:if="${s.photo == null}"
+				     class="student-placeholder">
+				     👤
+				</div>
 
                 <span th:if="${s.photo == null}">
                     No Photo
