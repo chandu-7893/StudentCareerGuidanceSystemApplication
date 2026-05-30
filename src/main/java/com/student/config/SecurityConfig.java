@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 
 import com.student.repository.UserRepository;
 
@@ -40,6 +39,7 @@ public class SecurityConfig {
                 new DaoAuthenticationProvider(userDetailsService);
 
         provider.setPasswordEncoder(passwordEncoder);
+
         return provider;
     }
 
@@ -49,24 +49,35 @@ public class SecurityConfig {
 
         http
             .authorizeHttpRequests(auth -> auth
+
+                // PUBLIC PAGES
                 .requestMatchers(
-                        "/register",
+                        "/home",
                         "/login",
+                        "/register",
                         "/css/**",
                         "/js/**",
                         "/images/**"
                 ).permitAll()
+
+                // PROTECTED PAGES
                 .anyRequest().authenticated()
             )
+
             .formLogin(login -> login
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
+
+                // after login go dashboard
                 .defaultSuccessUrl("/", true)
+
                 .failureUrl("/login?error")
                 .permitAll()
             )
+
             .logout(logout -> logout
-                .logoutSuccessUrl("/login?logout")
+                // after logout go home page
+                .logoutSuccessUrl("/home")
                 .permitAll()
             );
 

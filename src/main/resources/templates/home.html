@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Student Career Guidance | Home</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+
+<body>
+
+<header class="hero">
+
+    <nav class="navbar">
+        <div class="logo">
+            🎓 Student Career Guidance
+        </div>
+
+        <div class="nav-links">
+            <a href="#careers">Careers</a>
+            <a href="#colleges">Colleges</a>
+            <a href="#roadmaps">Roadmaps</a>
+            <a th:href="@{/login}" class="login-btn">Login</a>
+            <a th:href="@{/register}" class="register-btn">Register</a>
+        </div>
+    </nav>
+
+    <div class="hero-content">
+
+        <span class="badge">AI Powered Career Planning Platform</span>
+
+        <h1>
+            Choose the Right Career Path for Your Future
+        </h1>
+
+        <p>
+            Explore career suggestions, study roadmaps, recommended colleges,
+            skill paths and personalized guidance for 10th, 12th, Diploma and Degree students.
+        </p>
+
+        <div class="hero-actions">
+            <a th:href="@{/login}" class="primary-btn">Existing User Login</a>
+            <a th:href="@{/register}" class="secondary-btn">New User Register</a>
+        </div>
+
+    </div>
+
+</header>
+
+<section class="stats-section">
+
+    <div class="stat-card">
+        <h2>10th</h2>
+        <p>Career foundation guidance</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>12th</h2>
+        <p>Stream based career planning</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>Diploma</h2>
+        <p>Technical roadmap support</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>Degree</h2>
+        <p>Job-ready skill guidance</p>
+    </div>
+
+</section>
+
+<section id="careers" class="section">
+
+    <div class="section-title">
+        <span>Career Suggestions</span>
+        <h2>Popular Career Paths</h2>
+        <p>Students can explore suitable careers based on qualification and interest.</p>
+    </div>
+
+    <div class="card-grid">
+
+        <div class="career-card">
+            <div class="icon">💻</div>
+            <h3>Software Engineer</h3>
+            <p>Learn Java, Spring Boot, React, SQL and build real projects.</p>
+        </div>
+
+        <div class="career-card">
+            <div class="icon">🏥</div>
+            <h3>Medical Career</h3>
+            <p>Plan for MBBS, BDS, Nursing, Pharmacy and healthcare careers.</p>
+        </div>
+
+        <div class="career-card">
+            <div class="icon">🏦</div>
+            <h3>Banking & Finance</h3>
+            <p>Prepare for Bank PO, CA, accounting, finance and commerce roles.</p>
+        </div>
+
+        <div class="career-card">
+            <div class="icon">👮</div>
+            <h3>Government Jobs</h3>
+            <p>Roadmaps for UPSC, SSC, Railways, Police and state exams.</p>
+        </div>
+
+        <div class="career-card">
+            <div class="icon">📊</div>
+            <h3>Data Analyst</h3>
+            <p>Learn Excel, SQL, Python, Power BI and analytics skills.</p>
+        </div>
+
+        <div class="career-card">
+            <div class="icon">🎨</div>
+            <h3>Design & Marketing</h3>
+            <p>Explore UI/UX, digital marketing, content and creative careers.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="colleges" class="section college-bg">
+
+    <div class="section-title">
+        <span>College Recommendations</span>
+        <h2>Top Colleges Students Can Explore</h2>
+        <p>Useful colleges and institutions for engineering, degree and career growth.</p>
+    </div>
+
+    <div class="college-grid">
+
+        <div class="college-card">
+            <h3>IIT Hyderabad</h3>
+            <p>Engineering, Research and Technology</p>
+            <span>Hyderabad</span>
+        </div>
+
+        <div class="college-card">
+            <h3>NIT Warangal</h3>
+            <p>Engineering and Technical Programs</p>
+            <span>Warangal</span>
+        </div>
+
+        <div class="college-card">
+            <h3>JNTU Hyderabad</h3>
+            <p>B.Tech, M.Tech and Professional Courses</p>
+            <span>Hyderabad</span>
+        </div>
+
+        <div class="college-card">
+            <h3>Osmania University</h3>
+            <p>Degree, PG and Research Programs</p>
+            <span>Hyderabad</span>
+        </div>
+
+        <div class="college-card">
+            <h3>VIT University</h3>
+            <p>Engineering and Computer Science</p>
+            <span>Vellore</span>
+        </div>
+
+        <div class="college-card">
+            <h3>BITS Pilani</h3>
+            <p>Engineering, Science and Technology</p>
+            <span>Pilani</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="roadmaps" class="section">
+
+    <div class="section-title">
+        <span>Study Roadmaps</span>
+        <h2>Roadmaps for Students</h2>
+        <p>Simple study paths for different education levels.</p>
+    </div>
+
+    <div class="roadmap-grid">
+
+        <div class="roadmap-card">
+            <h3>After 10th</h3>
+            <ul>
+                <li>Choose Intermediate / Diploma</li>
+                <li>Select stream based on interest</li>
+                <li>Build foundation skills</li>
+                <li>Prepare for entrance exams</li>
+            </ul>
+        </div>
+
+        <div class="roadmap-card">
+            <h3>After 12th MPC</h3>
+            <ul>
+                <li>Prepare for Engineering / Degree</li>
+                <li>Learn programming basics</li>
+                <li>Build mini projects</li>
+                <li>Apply for internships</li>
+            </ul>
+        </div>
+
+        <div class="roadmap-card">
+            <h3>After 12th BiPC</h3>
+            <ul>
+                <li>Explore Medical / Pharmacy / Nursing</li>
+                <li>Prepare for NEET or related exams</li>
+                <li>Choose healthcare specialization</li>
+                <li>Gain practical knowledge</li>
+            </ul>
+        </div>
+
+        <div class="roadmap-card">
+            <h3>After Degree</h3>
+            <ul>
+                <li>Select job role</li>
+                <li>Learn technical skills</li>
+                <li>Create resume and LinkedIn</li>
+                <li>Apply for jobs</li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cta-section">
+
+    <h2>Ready to Generate Your Career Roadmap?</h2>
+
+    <p>
+        Login if you already have an account, or register now to start your personalized career journey.
+    </p>
+
+    <div class="cta-actions">
+        <a th:href="@{/login}" class="primary-btn">Login Now</a>
+        <a th:href="@{/register}" class="secondary-btn">Create Account</a>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Student Career Guidance System | Built with Spring Boot</p>
+</footer>
+
+</body>
+</html>

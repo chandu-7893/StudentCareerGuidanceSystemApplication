@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f8fafc;
+    color: #0f172a;
+    overflow-x: hidden;
+}
+
+.hero {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(96,165,250,.45), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(168,85,247,.45), transparent 35%),
+        linear-gradient(135deg, #020617, #1e3a8a, #2563eb);
+    color: white;
+    padding: 25px;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    border-radius: 24px;
+    background: rgba(255,255,255,.10);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.18);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.login-btn,
+.register-btn {
+    padding: 11px 18px;
+    border-radius: 999px;
+}
+
+.login-btn {
+    background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.22);
+}
+
+.register-btn {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.hero-content {
+    max-width: 930px;
+    margin: 120px auto 0;
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.22);
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.hero-content h1 {
+    font-size: 64px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero-content p {
+    max-width: 760px;
+    margin: auto;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #dbeafe;
+}
+
+.hero-actions,
+.cta-actions {
+    margin-top: 34px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+    text-decoration: none;
+    padding: 15px 28px;
+    border-radius: 999px;
+    font-weight: 900;
+    transition: .3s;
+}
+
+.primary-btn {
+    background: white;
+    color: #2563eb;
+}
+
+.secondary-btn {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.career-card:hover,
+.college-card:hover,
+.roadmap-card:hover,
+.stat-card:hover {
+    transform: translateY(-8px);
+}
+
+.stats-section {
+    width: 92%;
+    margin: -70px auto 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+    position: relative;
+    z-index: 5;
+}
+
+.stat-card {
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(16px);
+    padding: 28px;
+    border-radius: 26px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(15,23,42,.15);
+    transition: .3s;
+}
+
+.stat-card h2 {
+    color: #2563eb;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.section {
+    padding: 80px 6%;
+}
+
+.section-title {
+    max-width: 760px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.section-title span {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-weight: 900;
+}
+
+.section-title h2 {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.section-title p {
+    color: #64748b;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.card-grid,
+.college-grid,
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.career-card,
+.college-card,
+.roadmap-card {
+    background: white;
+    padding: 30px;
+    border-radius: 28px;
+    box-shadow: 0 18px 45px rgba(15,23,42,.10);
+    border: 1px solid rgba(37,99,235,.10);
+    transition: .3s;
+}
+
+.icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.career-card h3,
+.college-card h3,
+.roadmap-card h3 {
+    color: #1e3a8a;
+    margin-bottom: 12px;
+    font-size: 22px;
+}
+
+.career-card p,
+.college-card p {
+    color: #475569;
+    line-height: 1.7;
+}
+
+.college-bg {
+    background:
+        radial-gradient(circle at top right, rgba(37,99,235,.12), transparent 30%),
+        #eef2ff;
+}
+
+.college-card span {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-weight: 900;
+}
+
+.roadmap-card ul {
+    list-style: none;
+    display: grid;
+    gap: 13px;
+}
+
+.roadmap-card li {
+    padding: 12px 14px;
+    border-radius: 15px;
+    background: #eff6ff;
+    color: #1e3a8a;
+    font-weight: 700;
+}
+
+.cta-section {
+    width: 92%;
+    margin: 50px auto;
+    padding: 60px 30px;
+    border-radius: 36px;
+    text-align: center;
+    color: white;
+    background:
+        radial-gradient(circle at top right, rgba(255,255,255,.18), transparent 28%),
+        linear-gradient(135deg, #1e3a8a, #2563eb, #7c3aed);
+    box-shadow: 0 25px 70px rgba(37,99,235,.30);
+}
+
+.cta-section h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    max-width: 720px;
+    margin: auto;
+    color: #dbeafe;
+    line-height: 1.7;
+    font-size: 18px;
+}
+
+footer {
+    background: #020617;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+/* MOBILE */
+
+@media(max-width: 850px) {
+    .navbar {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero-content {
+        margin-top: 80px;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .hero-content p {
+        font-size: 17px;
+    }
+
+    .section-title h2,
+    .cta-section h2 {
+        font-size: 32px;
+    }
+}
+
+@media(max-width: 520px) {
+    .hero {
+        padding: 15px;
+    }
+
+    .nav-links a:not(.login-btn):not(.register-btn) {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
