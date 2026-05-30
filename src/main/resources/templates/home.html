@@ -1,367 +1,413 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+	<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Student Career Guidance</title>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>Student Career Guidance</title>
     <link rel="stylesheet" th:href="@{/css/home.css}">
-</head>
-
-<body>
-
-<header class="hero">
-
-    <nav class="navbar">
-        <div class="logo">🎓 CareerGuide</div>
-
-        <div class="nav-links">
-            <a href="#careers">Careers</a>
-            <a href="#colleges">Colleges</a>
-            <a href="#roadmaps">Roadmaps</a>
-            <a href="#success">Success</a>
-            <a th:href="@{/login}" class="nav-login">Login</a>
-            <a th:href="@{/register}" class="nav-register">Register</a>
-        </div>
-    </nav>
-
-    <div class="hero-grid">
-
-        <div class="hero-left">
-            <span class="premium-badge">🚀 AI Powered Career Platform</span>
-
-            <h1>
-                Find Your Perfect
-                <span>Career Roadmap</span>
-                After Studies
-            </h1>
-
-            <p>
-                Get career suggestions, study roadmaps, college recommendations,
-                PDF reports and email guidance for 10th, 12th, Diploma and Degree students.
-            </p>
-
-            <div class="hero-buttons">
-                <a th:href="@{/login}" class="primary-btn">Existing User Login</a>
-                <a th:href="@{/register}" class="secondary-btn">New User Register</a>
-            </div>
-
-            <div class="quick-stats">
-                <div>
-                    <h2>1000+</h2>
-                    <span>Students Guided</span>
-                </div>
-
-                <div>
-                    <h2>500+</h2>
-                    <span>Reports Generated</span>
-                </div>
-
-                <div>
-                    <h2>100+</h2>
-                    <span>College Suggestions</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-right">
-
-            <div class="glass-card main-card">
-                <div class="card-top">
-                    <div>
-                        <h3>Career Match</h3>
-                        <p>Based on student interest</p>
-                    </div>
-                    <span>95%</span>
-                </div>
-
-                <div class="progress-box">
-                    <label>Software Engineer</label>
-                    <div><span style="width:95%"></span></div>
-                </div>
-
-                <div class="progress-box">
-                    <label>Data Analyst</label>
-                    <div><span style="width:82%"></span></div>
-                </div>
-
-                <div class="progress-box">
-                    <label>Government Jobs</label>
-                    <div><span style="width:74%"></span></div>
-                </div>
-            </div>
-
-            <div class="mini-card one">📊 Smart Analytics</div>
-            <div class="mini-card two">📧 Email Reports</div>
-            <div class="mini-card three">📄 PDF Download</div>
-
-        </div>
-
-    </div>
-
-</header>
-
-<section class="access-section">
-
-    <div class="access-card login-access">
-        <div class="access-icon">🔐</div>
-        <h2>Existing User?</h2>
-        <p>Login to access your dashboard, saved students, reports and career roadmaps.</p>
-        <a th:href="@{/login}">Login Now</a>
-    </div>
-
-    <div class="access-card register-access">
-        <div class="access-icon">📝</div>
-        <h2>New Student?</h2>
-        <p>Create your account and start generating personalized career guidance reports.</p>
-        <a th:href="@{/register}">Register Now</a>
-    </div>
-
-</section>
-
-<section class="stats-section">
-
-    <div class="stat-card">
-        <h2>10th</h2>
-        <p>Foundation career guidance</p>
-    </div>
-
-    <div class="stat-card">
-        <h2>12th</h2>
-        <p>Stream based roadmap</p>
-    </div>
-
-    <div class="stat-card">
-        <h2>Diploma</h2>
-        <p>Technical career path</p>
-    </div>
-
-    <div class="stat-card">
-        <h2>Degree</h2>
-        <p>Job-ready planning</p>
-    </div>
-
-</section>
-
-<section id="careers" class="section">
-
-    <div class="section-title">
-        <span>Career Suggestions</span>
-        <h2>Explore Popular Career Paths</h2>
-        <p>
-            Students can choose a suitable career based on qualification, percentage and interest.
-        </p>
-    </div>
-
-    <div class="card-grid">
-
-        <div class="career-card">
-            <div class="icon">💻</div>
-            <h3>Software Engineer</h3>
-            <p>Java, Spring Boot, React, SQL, Cloud and real projects.</p>
-        </div>
-
-        <div class="career-card">
-            <div class="icon">🏥</div>
-            <h3>Medical Career</h3>
-            <p>MBBS, BDS, Nursing, Pharmacy and healthcare guidance.</p>
-        </div>
-
-        <div class="career-card">
-            <div class="icon">🏦</div>
-            <h3>Banking & Finance</h3>
-            <p>Bank PO, CA, accounting, finance and commerce careers.</p>
-        </div>
-
-        <div class="career-card">
-            <div class="icon">👮</div>
-            <h3>Government Jobs</h3>
-            <p>UPSC, SSC, Railways, Police and state exam roadmaps.</p>
-        </div>
-
-        <div class="career-card">
-            <div class="icon">📊</div>
-            <h3>Data Analyst</h3>
-            <p>Excel, SQL, Python, Power BI and analytics skills.</p>
-        </div>
-
-        <div class="career-card">
-            <div class="icon">🎨</div>
-            <h3>Design & Marketing</h3>
-            <p>UI/UX, digital marketing, content and creative careers.</p>
-        </div>
-
-    </div>
-
-</section>
-
-<section id="colleges" class="section college-bg">
-
-    <div class="section-title">
-        <span>College Suggestions</span>
-        <h2>Recommended Colleges</h2>
-        <p>
-            Explore top colleges for engineering, degree, diploma and professional courses.
-        </p>
-    </div>
-
-    <div class="college-grid">
-
-        <div class="college-card">
-            <span class="college-rank">#1</span>
-            <h3>IIT Hyderabad</h3>
-            <p>Engineering, Technology and Research</p>
-            <b>📍 Hyderabad</b>
-        </div>
-
-        <div class="college-card">
-            <span class="college-rank">#2</span>
-            <h3>NIT Warangal</h3>
-            <p>Engineering and Technical Programs</p>
-            <b>📍 Warangal</b>
-        </div>
-
-        <div class="college-card">
-            <span class="college-rank">#3</span>
-            <h3>JNTU Hyderabad</h3>
-            <p>B.Tech, M.Tech and professional courses</p>
-            <b>📍 Hyderabad</b>
-        </div>
-
-        <div class="college-card">
-            <span class="college-rank">#4</span>
-            <h3>Osmania University</h3>
-            <p>Degree, PG and Research Programs</p>
-            <b>📍 Hyderabad</b>
-        </div>
-
-        <div class="college-card">
-            <span class="college-rank">#5</span>
-            <h3>VIT University</h3>
-            <p>Engineering and Computer Science</p>
-            <b>📍 Vellore</b>
-        </div>
-
-        <div class="college-card">
-            <span class="college-rank">#6</span>
-            <h3>BITS Pilani</h3>
-            <p>Engineering, Science and Technology</p>
-            <b>📍 Pilani</b>
-        </div>
-
-    </div>
-
-</section>
-
-<section id="roadmaps" class="section">
-
-    <div class="section-title">
-        <span>Study Roadmaps</span>
-        <h2>Simple Roadmaps for Students</h2>
-        <p>
-            Clear path for students after 10th, 12th, Diploma and Degree.
-        </p>
-    </div>
-
-    <div class="roadmap-line">
-
-        <div class="roadmap-step">
-            <div class="step-no">01</div>
-            <h3>Choose Qualification</h3>
-            <p>10th, 12th, Diploma or Degree completed students can start guidance.</p>
-        </div>
-
-        <div class="roadmap-step">
-            <div class="step-no">02</div>
-            <h3>Select Interest</h3>
-            <p>Engineering, Medical, Commerce, IT, Software or Government Jobs.</p>
-        </div>
-
-        <div class="roadmap-step">
-            <div class="step-no">03</div>
-            <h3>Generate Roadmap</h3>
-            <p>Get personalized career path and study steps based on profile.</p>
-        </div>
-
-        <div class="roadmap-step">
-            <div class="step-no">04</div>
-            <h3>Download Report</h3>
-            <p>Download PDF report and send guidance directly through email.</p>
-        </div>
-
-    </div>
-
-</section>
-
-<section id="success" class="section success-section">
-
-    <div class="section-title">
-        <span>Student Success</span>
-        <h2>What Students Can Achieve</h2>
-        <p>
-            Build a clear academic and career plan with guided study direction.
-        </p>
-    </div>
-
-    <div class="success-grid">
-
-        <div class="success-card">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p>
-                "This platform helps students understand which career path suits their qualification and interest."
-            </p>
-            <h4>Career Planning</h4>
-        </div>
-
-        <div class="success-card">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p>
-                "Students can generate roadmap reports and share them through email."
-            </p>
-            <h4>PDF & Email Reports</h4>
-        </div>
-
-        <div class="success-card">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p>
-                "College suggestions and roadmaps make the system useful for academic planning."
-            </p>
-            <h4>College Guidance</h4>
-        </div>
-
-    </div>
-
-</section>
-
-<section class="cta-section">
-
-    <h2>Start Your Career Journey Today</h2>
-
-    <p>
-        Existing users can login. New students can register and generate personalized roadmaps.
-    </p>
-
-    <div class="cta-actions">
-        <a th:href="@{/login}" class="primary-btn">Login Now</a>
-        <a th:href="@{/register}" class="secondary-btn">Create Account</a>
-    </div>
-
-</section>
-
-<footer class="footer">
-
-    <div>
-        <h3>🎓 CareerGuide</h3>
-        <p>AI Career Guidance Platform for Students</p>
-    </div>
-
-    <div class="footer-links">
-        <a href="#careers">Careers</a>
-        <a href="#colleges">Colleges</a>
-        <a href="#roadmaps">Roadmaps</a>
-        <a th:href="@{/login}">Login</a>
-        <a th:href="@{/register}">Register</a>
-    </div>
-
-</footer>
-
-</body>
-</html>
+	</head>
+
+	<body>
+
+	<header class="hero">
+
+	    <nav class="navbar">
+	        <div class="logo">🎓 CareerGuide</div>
+
+	        <div class="nav-links">
+	            <a href="#careers">Careers</a>
+	            <a href="#colleges">Colleges</a>
+	            <a href="#roadmaps">Roadmaps</a>
+	            <a href="#success">Success</a>
+	            <a th:href="@{/login}" class="nav-login">Login</a>
+	            <a th:href="@{/register}" class="nav-register">Register</a>
+	        </div>
+	    </nav>
+
+	    <div class="hero-grid">
+
+	        <div class="hero-left">
+	            <span class="premium-badge">🚀 AI Powered Career Platform</span>
+
+	            <h1>
+	                Find Your Perfect
+	                <span>Career Roadmap</span>
+	                From School to Success
+	            </h1>
+
+	            <p>
+	                Get AI-backed career suggestions, personalized study roadmaps,
+	                top college matches, and downloadable reports for 10th, 12th, Diploma, and Degree learners.
+	            </p>
+
+	            <div class="hero-buttons">
+	                <a th:href="@{/login}" class="primary-btn">Existing User Login</a>
+	                <a th:href="@{/register}" class="secondary-btn">New User Register</a>
+	            </div>
+
+	            <p style="margin-top: 24px; color: rgba(255,255,255,.82); max-width: 720px; line-height: 1.75;">
+	                Trusted by students and schools for smart exam planning, college selection, and career success tracking.
+	            </p>
+
+	            <div class="quick-stats">
+	                <div>
+	                    <h2>1000+</h2>
+	                    <span>Students Guided</span>
+	                </div>
+
+	                <div>
+	                    <h2>500+</h2>
+	                    <span>Reports Generated</span>
+	                </div>
+
+	                <div>
+	                    <h2>100+</h2>
+	                    <span>College Suggestions</span>
+	                </div>
+	            </div>
+	        </div>
+
+	        <div class="hero-right">
+
+	            <div class="glass-card main-card">
+	                <div class="card-top">
+	                    <div>
+	                        <h3>Career Match</h3>
+	                        <p>Based on student interest</p>
+	                    </div>
+	                    <span>95%</span>
+	                </div>
+
+	                <div class="progress-box">
+	                    <label>Software Engineer</label>
+	                    <div><span style="width:95%"></span></div>
+	                </div>
+
+	                <div class="progress-box">
+	                    <label>Data Analyst</label>
+	                    <div><span style="width:82%"></span></div>
+	                </div>
+
+	                <div class="progress-box">
+	                    <label>Government Jobs</label>
+	                    <div><span style="width:74%"></span></div>
+	                </div>
+	            </div>
+
+	            <div class="mini-card one">📊 Smart Analytics</div>
+	            <div class="mini-card two">📧 Email Reports</div>
+	            <div class="mini-card three">📄 PDF Download</div>
+
+	        </div>
+
+	    </div>
+
+	</header>
+
+	<section class="section">
+
+	    <div class="section-title">
+	        <span>Why Choose CareerGuide</span>
+	        <h2>Premium Career Planning for Every Student</h2>
+	        <p>
+	            Modern guidance built for today's learners: AI insights, college matching, exam-ready roadmaps, and instant progress tracking.
+	        </p>
+	    </div>
+
+	    <div class="card-grid">
+
+	        <div class="career-card">
+	            <div class="icon">🎯</div>
+	            <h3>Personalized Study Plans</h3>
+	            <p>Receive step-by-step learning roadmaps tailored to your current grade and future goals.</p>
+	        </div>
+
+	        <div class="career-card">
+	            <div class="icon">🤖</div>
+	            <h3>AI Insights & Reports</h3>
+	            <p>Powerful analytics and downloadable reports keep your guidance precise and easy to share.</p>
+	        </div>
+
+	        <div class="career-card">
+	            <div class="icon">🏛️</div>
+	            <h3>Top College Matches</h3>
+	            <p>Get curated college recommendations based on your stream, score, and career ambition.</p>
+	        </div>
+
+	        <div class="career-card">
+	            <div class="icon">📈</div>
+	            <h3>Progress Tracking</h3>
+	            <p>Track milestones, performance, and roadmap completion with a premium student dashboard.</p>
+	        </div>
+
+	    </div>
+
+	</section>
+
+	<section class="access-section">
+
+	    <div class="access-card login-access">
+	        <div class="access-icon">🔐</div>
+	        <h2>Existing User?</h2>
+	        <p>Login to access your dashboard, saved students, reports and career roadmaps.</p>
+	        <a th:href="@{/login}">Login Now</a>
+	    </div>
+
+	    <div class="access-card register-access">
+	        <div class="access-icon">📝</div>
+	        <h2>New Student?</h2>
+	        <p>Create your account and start generating personalized career guidance reports.</p>
+	        <a th:href="@{/register}">Register Now</a>
+	    </div>
+
+	</section>
+
+	<section class="stats-section">
+
+	    <div class="stat-card">
+	        <h2>10th</h2>
+	        <p>Foundation career guidance</p>
+	    </div>
+
+	    <div class="stat-card">
+	        <h2>12th</h2>
+	        <p>Stream based roadmap</p>
+	    </div>
+
+	    <div class="stat-card">
+	        <h2>Diploma</h2>
+	        <p>Technical career path</p>
+	    </div>
+
+	    <div class="stat-card">
+	        <h2>Degree</h2>
+	        <p>Job-ready planning</p>
+	    </div>
+
+	</section>
+
+	<section id="careers" class="section">
+
+	    <div class="section-title">
+	        <span>Career Suggestions</span>
+	        <h2>Explore Popular Career Paths</h2>
+	        <p>
+	            Students can choose a suitable career based on qualification, percentage and interest.
+	        </p>
+	    </div>
+
+	    <div class="card-grid">
+
+	        <div class="career-card">
+	            <div class="icon">💻</div>
+	            <h3>Software Engineer</h3>
+	            <p>Java, Spring Boot, React, SQL, Cloud and real projects.</p>
+	        </div>
+
+	        <div class="career-card">
+	            <div class="icon">🏥</div>
+	            <h3>Medical Career</h3>
+	            <p>MBBS, BDS, Nursing, Pharmacy and healthcare guidance.</p>
+	        </div>
+
+	        <div class="career-card">
+	            <div class="icon">🏦</div>
+	            <h3>Banking & Finance</h3>
+	            <p>Bank PO, CA, accounting, finance and commerce careers.</p>
+	        </div>
+
+	        <div class="career-card">
+	            <div class="icon">👮</div>
+	            <h3>Government Jobs</h3>
+	            <p>UPSC, SSC, Railways, Police and state exam roadmaps.</p>
+	        </div>
+
+	        <div class="career-card">
+	            <div class="icon">📊</div>
+	            <h3>Data Analyst</h3>
+	            <p>Excel, SQL, Python, Power BI and analytics skills.</p>
+	        </div>
+
+	        <div class="career-card">
+	            <div class="icon">🎨</div>
+	            <h3>Design & Marketing</h3>
+	            <p>UI/UX, digital marketing, content and creative careers.</p>
+	        </div>
+
+	    </div>
+
+	</section>
+
+	<section id="colleges" class="section college-bg">
+
+	    <div class="section-title">
+	        <span>College Suggestions</span>
+	        <h2>Recommended Colleges</h2>
+	        <p>
+	            Explore top colleges for engineering, degree, diploma and professional courses.
+	        </p>
+	    </div>
+
+	    <div class="college-grid">
+
+	        <div class="college-card">
+	            <span class="college-rank">#1</span>
+	            <h3>IIT Hyderabad</h3>
+	            <p>Engineering, Technology and Research</p>
+	            <b>📍 Hyderabad</b>
+	        </div>
+
+	        <div class="college-card">
+	            <span class="college-rank">#2</span>
+	            <h3>NIT Warangal</h3>
+	            <p>Engineering and Technical Programs</p>
+	            <b>📍 Warangal</b>
+	        </div>
+
+	        <div class="college-card">
+	            <span class="college-rank">#3</span>
+	            <h3>JNTU Hyderabad</h3>
+	            <p>B.Tech, M.Tech and professional courses</p>
+	            <b>📍 Hyderabad</b>
+	        </div>
+
+	        <div class="college-card">
+	            <span class="college-rank">#4</span>
+	            <h3>Osmania University</h3>
+	            <p>Degree, PG and Research Programs</p>
+	            <b>📍 Hyderabad</b>
+	        </div>
+
+	        <div class="college-card">
+	            <span class="college-rank">#5</span>
+	            <h3>VIT University</h3>
+	            <p>Engineering and Computer Science</p>
+	            <b>📍 Vellore</b>
+	        </div>
+
+	        <div class="college-card">
+	            <span class="college-rank">#6</span>
+	            <h3>BITS Pilani</h3>
+	            <p>Engineering, Science and Technology</p>
+	            <b>📍 Pilani</b>
+	        </div>
+
+	    </div>
+
+	</section>
+
+	<section id="roadmaps" class="section">
+
+	    <div class="section-title">
+	        <span>Study Roadmaps</span>
+	        <h2>Simple Roadmaps for Students</h2>
+	        <p>
+	            Clear path for students after 10th, 12th, Diploma and Degree.
+	        </p>
+	    </div>
+
+	    <div class="roadmap-line">
+
+	        <div class="roadmap-step">
+	            <div class="step-no">01</div>
+	            <h3>Choose Qualification</h3>
+	            <p>10th, 12th, Diploma or Degree completed students can start guidance.</p>
+	        </div>
+
+	        <div class="roadmap-step">
+	            <div class="step-no">02</div>
+	            <h3>Select Interest</h3>
+	            <p>Engineering, Medical, Commerce, IT, Software or Government Jobs.</p>
+	        </div>
+
+	        <div class="roadmap-step">
+	            <div class="step-no">03</div>
+	            <h3>Generate Roadmap</h3>
+	            <p>Get personalized career path and study steps based on profile.</p>
+	        </div>
+
+	        <div class="roadmap-step">
+	            <div class="step-no">04</div>
+	            <h3>Download Report</h3>
+	            <p>Download PDF report and send guidance directly through email.</p>
+	        </div>
+
+	    </div>
+
+	</section>
+
+	<section id="success" class="section success-section">
+
+	    <div class="section-title">
+	        <span>Student Success</span>
+	        <h2>What Students Can Achieve</h2>
+	        <p>
+	            Build a clear academic and career plan with guided study direction.
+	        </p>
+	    </div>
+
+	    <div class="success-grid">
+
+	        <div class="success-card">
+	            <div class="stars">⭐⭐⭐⭐⭐</div>
+	            <p>
+	                "This platform helps students understand which career path suits their qualification and interest."
+	            </p>
+	            <h4>Career Planning</h4>
+	        </div>
+
+	        <div class="success-card">
+	            <div class="stars">⭐⭐⭐⭐⭐</div>
+	            <p>
+	                "Students can generate roadmap reports and share them through email."
+	            </p>
+	            <h4>PDF & Email Reports</h4>
+	        </div>
+
+	        <div class="success-card">
+	            <div class="stars">⭐⭐⭐⭐⭐</div>
+	            <p>
+	                "College suggestions and roadmaps make the system useful for academic planning."
+	            </p>
+	            <h4>College Guidance</h4>
+	        </div>
+
+	    </div>
+
+	</section>
+
+	<section class="cta-section">
+
+	    <h2>Start Your Career Journey Today</h2>
+
+	    <p>
+	        Existing users can login. New students can register and generate personalized roadmaps.
+	    </p>
+
+	    <div class="cta-actions">
+	        <a th:href="@{/login}" class="primary-btn">Login Now</a>
+	        <a th:href="@{/register}" class="secondary-btn">Create Account</a>
+	    </div>
+
+	</section>
+
+	<footer class="footer">
+
+	    <div>
+	        <h3>🎓 CareerGuide</h3>
+	        <p>AI Career Guidance Platform for Students</p>
+	    </div>
+
+	    <div class="footer-links">
+	        <a href="#careers">Careers</a>
+	        <a href="#colleges">Colleges</a>
+	        <a href="#roadmaps">Roadmaps</a>
+	        <a th:href="@{/login}">Login</a>
+	        <a th:href="@{/register}">Register</a>
+	    </div>
+
+	</footer>
+
+	</body>
+	</html>
