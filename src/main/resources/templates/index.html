@@ -265,11 +265,11 @@
                     Roadmap
                 </a>
 
-                <button type="button"
-                        class="delete-btn"
-                        th:onclick="'openDeleteModal(' + ${s.id} + ', \'' + ${s.name} + '\')'">
-                    🗑 Delete
-                </button>
+				<button type="button"
+				        class="delete-btn"
+				        th:onclick="'openDeleteModal(' + ${s.id} + ')'">
+				    🗑 Delete
+				</button>
             </td>
         </tr>
         </tbody>
@@ -397,6 +397,45 @@
     function closeDeleteModal() {
         document.getElementById("deleteModal").style.display = "none";
     }
+</script>
+
+<div id="deleteModal" class="delete-modal">
+    <div class="delete-card">
+
+        <button type="button" class="modal-close" onclick="closeDeleteModal()">×</button>
+
+        <div class="delete-icon">⚠️</div>
+
+        <h2>Delete Student?</h2>
+
+        <p>This action cannot be undone.</p>
+
+        <span class="warning-text">
+            Student record will be permanently removed.
+        </span>
+
+        <div class="delete-actions">
+            <button type="button" class="cancel-btn" onclick="closeDeleteModal()">
+                Cancel
+            </button>
+
+            <a id="deleteLink" class="confirm-btn">
+                Yes, Delete
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function openDeleteModal(id) {
+    document.getElementById("deleteModal").style.display = "flex";
+    document.getElementById("deleteLink").href = "/delete/" + id;
+}
+
+function closeDeleteModal() {
+    document.getElementById("deleteModal").style.display = "none";
+}
 </script>
 
 </body>

@@ -744,3 +744,106 @@ tbody tr:hover {
         width: 100%;
     }
 }
+
+
+/* PREMIUM DELETE MODAL FIX */
+
+.delete-modal {
+    position: fixed !important;
+    inset: 0 !important;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(2, 6, 23, .78);
+    backdrop-filter: blur(16px);
+    z-index: 999999;
+}
+
+.delete-card {
+    position: relative;
+    width: 430px;
+    max-width: 90%;
+    padding: 40px 32px;
+    text-align: center;
+    border-radius: 32px;
+    background: linear-gradient(145deg, #0f172a, #1e293b);
+    border: 1px solid rgba(255,255,255,.16);
+    box-shadow: 0 35px 95px rgba(0,0,0,.55);
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+    color: white;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-icon {
+    font-size: 64px;
+    margin-bottom: 18px;
+}
+
+.delete-card h2 {
+    color: white !important;
+    font-size: 31px;
+    margin-bottom: 12px;
+}
+
+.delete-card p {
+    color: #e5e7eb !important;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.warning-text {
+    display: block;
+    margin: 16px 0 28px;
+    color: #fca5a5;
+    font-weight: 900;
+}
+
+.delete-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.cancel-btn,
+.confirm-btn {
+    min-width: 138px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.cancel-btn {
+    background: #f8fafc !important;
+    color: #111827 !important;
+}
+
+.confirm-btn {
+    background: linear-gradient(135deg, #ff1744, #ff4d6d) !important;
+    color: white !important;
+}
+
+.delete-btn {
+    width: auto !important;
+    min-width: 125px;
+    padding: 11px 22px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(135deg, #ff1744, #ff4d6d) !important;
+    color: white !important;
+    font-weight: 800 !important;
+    border: none !important;
+    cursor: pointer;
+}
