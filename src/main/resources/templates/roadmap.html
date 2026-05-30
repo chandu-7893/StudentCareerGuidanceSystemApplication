@@ -8,283 +8,269 @@
 
 <body>
 
-<div class="bg-shape shape1"></div>
-<div class="bg-shape shape2"></div>
+	<div class="bg-shape shape1"></div>
+	<div class="bg-shape shape2"></div>
 
-<div class="roadmap-page">
+	<div class="roadmap-page">
 
-	<div class="top-actions">
-		<a th:href="@{/}" class="back-btn">← Back to Dashboard</a>
+		<div class="top-actions">
+			<a th:href="@{/}" class="back-btn">← Back to Dashboard</a>
 
-		<button type="button" class="theme-toggle" onclick="toggleTheme()">
-			🌙 Dark Mode
-		</button>
-	</div>
-
-	<div id="toast" class="toast-success" th:if="${param.emailSent != null}">
-		<div class="toast-icon">✅</div>
-		<div>
-			<h4>Report Sent Successfully!</h4>
-			<p>Your career report has been emailed.</p>
-		</div>
-	</div>
-
-	<div class="profile-card">
-
-		<div class="profile-glow"></div>
-
-		<img th:if="${student.photo != null}"
-		     th:src="${student.photo}"
-		     class="profile-img"
-		     alt="Student Photo">
-
-		<div th:if="${student.photo == null}" class="profile-placeholder">
-			🎓
+			<button type="button" class="theme-toggle" onclick="toggleTheme()">
+				🌙 Dark Mode
+			</button>
 		</div>
 
-		<h1 th:text="${student.name}">Student Name</h1>
-
-		<p th:text="${student.qualification + ' | ' + student.interest}">
-			Qualification | Interest
-		</p>
-
-		<span th:text="${student.percentage + '%'}">0%</span>
-
-	</div>
-
-	<div class="progress-tracker premium-card">
-
-		<div class="section-heading">
-			<h2>📈 Student Progress Tracker</h2>
-			<p>Your career guidance journey status</p>
-		</div>
-
-		<div class="progress-score">
-			<div class="score-circle">
-				<span>100%</span>
-			</div>
-
+		<div id="toast" class="toast-success" th:if="${param.emailSent != null}">
+			<div class="toast-icon">✅</div>
 			<div>
-				<h3>Profile Completed</h3>
-				<p>All required steps are completed successfully.</p>
+				<h4>Report Sent Successfully!</h4>
+				<p>Your career report has been emailed.</p>
 			</div>
 		</div>
 
-		<div class="tracker-list">
+		<div class="profile-card">
 
-			<div class="tracker-item completed">
-				<span>✅</span>
-				<p>Basic Details Added</p>
+			<div class="profile-glow"></div>
+
+			<img th:if="${student.photo != null}" th:src="${student.photo}" class="profile-img" alt="Student Photo">
+
+			<div th:if="${student.photo == null}" class="profile-placeholder">
+				🎓
 			</div>
 
-			<div class="tracker-item completed">
-				<span>✅</span>
-				<p>Education Details Added</p>
-			</div>
+			<h1 th:text="${student.name}">Student Name</h1>
 
-			<div class="tracker-item completed">
-				<span>✅</span>
-				<p>Career Suggestion Generated</p>
-			</div>
-
-			<div class="tracker-item completed">
-				<span>✅</span>
-				<p>AI Career Recommendation Generated</p>
-			</div>
-
-			<div class="tracker-item completed">
-				<span>✅</span>
-				<p>Career Roadmap Created</p>
-			</div>
-
-			<div class="tracker-item completed">
-				<span>✅</span>
-				<p>College Recommendations Available</p>
-			</div>
-
-			<div class="tracker-item completed">
-				<span>✅</span>
-				<p>PDF Report Ready to Download</p>
-			</div>
-
-		</div>
-
-	</div>
-
-	<div class="action-row">
-
-		<a href="javascript:void(0)"
-		   class="email-btn"
-		   th:attr="data-url=@{/email-report/{id}(id=${student.id})}"
-		   onclick="openEmailConfirm(this)">
-			📧 Email My Career Report
-		</a>
-
-		<a th:href="@{/download-report/{id}(id=${student.id})}" class="pdf-btn">
-			📄 Download Career Report PDF
-		</a>
-
-	</div>
-
-	<div id="emailConfirmPopup" class="confirm-overlay">
-		<div class="confirm-box">
-
-			<div class="mail-icon">📧</div>
-
-			<h2>Send Career Report?</h2>
-
-			<p>
-				Are you sure you want to send this report to your registered email?
+			<p th:text="${student.qualification + ' | ' + student.interest}">
+				Qualification | Interest
 			</p>
 
-			<div class="confirm-actions">
+			<span th:text="${student.percentage + '%'}">0%</span>
 
-				<button type="button"
-				        class="yes-btn"
-				        onclick="sendEmailNow()">
-					Yes, Send
-				</button>
+		</div>
 
-				<button type="button"
-				        class="no-btn"
-				        onclick="closeEmailConfirm()">
-					Cancel
-				</button>
+		<div class="progress-tracker premium-card">
+
+			<div class="section-heading">
+				<h2>📈 Student Progress Tracker</h2>
+				<p>Your career guidance journey status</p>
+			</div>
+
+			<div class="progress-score">
+				<div class="score-circle">
+					<span>100%</span>
+				</div>
+
+				<div>
+					<h3>Profile Completed</h3>
+					<p>All required steps are completed successfully.</p>
+				</div>
+			</div>
+
+			<div class="tracker-list">
+
+				<div class="tracker-item completed">
+					<span>✅</span>
+					<p>Basic Details Added</p>
+				</div>
+
+				<div class="tracker-item completed">
+					<span>✅</span>
+					<p>Education Details Added</p>
+				</div>
+
+				<div class="tracker-item completed">
+					<span>✅</span>
+					<p>Career Suggestion Generated</p>
+				</div>
+
+				<div class="tracker-item completed">
+					<span>✅</span>
+					<p>AI Career Recommendation Generated</p>
+				</div>
+
+				<div class="tracker-item completed">
+					<span>✅</span>
+					<p>Career Roadmap Created</p>
+				</div>
+
+				<div class="tracker-item completed">
+					<span>✅</span>
+					<p>College Recommendations Available</p>
+				</div>
+
+				<div class="tracker-item completed">
+					<span>✅</span>
+					<p>PDF Report Ready to Download</p>
+				</div>
 
 			</div>
 
 		</div>
-	</div>
 
-	<div class="ai-section premium-card" th:if="${careerMatches}">
+		<div class="action-row">
 
-		<div class="section-heading">
-			<h2>🤖 AI Career Recommendation</h2>
-			<p>Top career matches based on your qualification, percentage and interest</p>
+			<a href="javascript:void(0)" class="email-btn" th:attr="data-url=@{/email-report/{id}(id=${student.id})}"
+				onclick="openEmailConfirm(this)">
+				📧 Email My Career Report
+			</a>
+
+			<a th:href="@{/download-report/{id}(id=${student.id})}" class="pdf-btn">
+				📄 Download Career Report PDF
+			</a>
+
 		</div>
 
-		<div class="career-grid">
+		<div id="emailConfirmPopup" class="confirm-overlay">
+			<div class="confirm-box">
 
-			<div class="career-card" th:each="career : ${careerMatches}">
+				<div class="mail-icon">📧</div>
 
-				<div class="career-top">
-					<h3 th:text="${career.careerName}">
-						Career Name
-					</h3>
+				<h2>Send Career Report?</h2>
 
-					<span th:text="${career.matchPercentage + '%'}">
-						95%
-					</span>
+				<p>
+					Are you sure you want to send this report to your registered email?
+				</p>
+
+				<div class="confirm-actions">
+
+					<button type="button" class="yes-btn" onclick="sendEmailNow()">
+						Yes, Send
+					</button>
+
+					<button type="button" class="no-btn" onclick="closeEmailConfirm()">
+						Cancel
+					</button>
+
 				</div>
 
-				<div class="progress-bar">
-					<div class="progress-fill"
-					     th:style="'width:' + ${career.matchPercentage} + '%'">
+			</div>
+		</div>
+
+		<div class="ai-section premium-card" th:if="${careerMatches}">
+
+			<div class="section-heading">
+				<h2>🤖 AI Career Recommendation</h2>
+				<p>Top career matches based on your qualification, percentage and interest</p>
+			</div>
+
+			<div class="career-grid">
+
+				<div class="career-card" th:each="career : ${careerMatches}">
+
+					<div class="career-top">
+						<h3 th:text="${career.careerName}">
+							Career Name
+						</h3>
+
+						<span th:text="${career.matchPercentage + '%'}">
+							95%
+						</span>
 					</div>
-				</div>
 
-				<p th:text="${career.description}">
-					Career description
-				</p>
+					<div class="progress-bar">
+						<div class="progress-fill" th:style="'width:' + ${career.matchPercentage} + '%'">
+						</div>
+					</div>
+
+					<p th:text="${career.description}">
+						Career description
+					</p>
+
+				</div>
 
 			</div>
 
 		</div>
 
-	</div>
+		<div class="suggestion-box premium-card">
 
-	<div class="suggestion-box premium-card">
+			<h2>💡 Career Suggestion</h2>
 
-		<h2>💡 Career Suggestion</h2>
+			<p th:text="${suggestion}">
+				Suggestion will appear here.
+			</p>
 
-		<p th:text="${suggestion}">
-			Suggestion will appear here.
-		</p>
+		</div>
 
-	</div>
+		<div class="timeline-card premium-card">
 
-	<div class="timeline-card premium-card">
+			<div class="roadmap-header">
 
-		<div class="roadmap-header">
+				<span class="roadmap-icon">🚀</span>
 
-			<span class="roadmap-icon">🚀</span>
+				<div>
+					<h2>Personalized Career Roadmap</h2>
+					<p>Step-by-step career path based on your profile</p>
+				</div>
 
-			<div>
-				<h2>Personalized Career Roadmap</h2>
-				<p>Step-by-step career path based on your profile</p>
+			</div>
+
+			<div class="timeline">
+
+				<div class="timeline-step" th:each="step, iterStat : ${#strings.arraySplit(roadmap, '↓')}">
+
+					<div class="step-no" th:text="${iterStat.index + 1}">
+						1
+					</div>
+
+					<div class="step-text">
+						<h3 th:text="${#strings.trim(step)}">
+							Roadmap Step
+						</h3>
+					</div>
+
+				</div>
+
 			</div>
 
 		</div>
 
-		<div class="timeline">
+		<div class="college-section premium-card" th:if="${colleges}">
 
-			<div class="timeline-step"
-			     th:each="step, iterStat : ${#strings.arraySplit(roadmap, '↓')}">
+			<div class="section-heading">
+				<h2>🏫 Recommended Colleges</h2>
+				<p>Based on your qualification and selected career path</p>
+			</div>
 
-				<div class="step-no"
-				     th:text="${iterStat.index + 1}">
-					1
-				</div>
+			<div class="college-grid">
 
-				<div class="step-text">
-					<h3 th:text="${#strings.trim(step)}">
-						Roadmap Step
+				<div class="college-card" th:each="c : ${colleges}">
+
+					<div class="college-badge">
+						Recommended
+					</div>
+
+					<h3 th:text="${c.collegeName}">
+						College Name
 					</h3>
-				</div>
 
-			</div>
+					<p>
+						<strong>Course:</strong>
+						<span th:text="${c.course}"></span>
+					</p>
 
-		</div>
+					<p>
+						<strong>Location:</strong>
+						<span th:text="${c.location}"></span>
+					</p>
 
-	</div>
+					<p>
+						<strong>Fees:</strong>
+						<span th:text="${c.fees}"></span>
+					</p>
 
-	<div class="college-section premium-card" th:if="${colleges}">
+					<div class="college-actions">
 
-		<div class="section-heading">
-			<h2>🏫 Recommended Colleges</h2>
-			<p>Based on your qualification and selected career path</p>
-		</div>
+						<a class="details-btn" th:href="@{/college/{id}(id=${c.id})}">
+							View Details
+						</a>
 
-		<div class="college-grid">
+						<a th:if="${c.website != null}" th:href="${c.website}" target="_blank" class="college-link">
+							Visit Website
+						</a>
 
-			<div class="college-card" th:each="c : ${colleges}">
-
-				<div class="college-badge">
-					Recommended
-				</div>
-
-				<h3 th:text="${c.collegeName}">
-					College Name
-				</h3>
-
-				<p>
-					<strong>Course:</strong>
-					<span th:text="${c.course}"></span>
-				</p>
-
-				<p>
-					<strong>Location:</strong>
-					<span th:text="${c.location}"></span>
-				</p>
-
-				<p>
-					<strong>Fees:</strong>
-					<span th:text="${c.fees}"></span>
-				</p>
-
-				<div class="college-actions">
-
-					<a class="details-btn"
-					   th:href="@{/college/{id}(id=${c.id})}">
-						View Details
-					</a>
-
-					<a th:if="${c.website != null}"
-					   th:href="${c.website}"
-					   target="_blank"
-					   class="college-link">
-						Visit Website
-					</a>
+					</div>
 
 				</div>
 
@@ -294,67 +280,87 @@
 
 	</div>
 
-</div>
+	<script>
+		let emailSendUrl = "";
 
-<script>
-	let emailSendUrl = "";
+		const themeButton = document.querySelector(".theme-toggle");
 
-	const themeButton = document.querySelector(".theme-toggle");
-
-	function applyTheme() {
-		if (localStorage.getItem("theme") === "dark") {
-			document.body.classList.add("dark-mode");
-			themeButton.innerText = "☀ Light Mode";
-		} else {
-			document.body.classList.remove("dark-mode");
-			themeButton.innerText = "🌙 Dark Mode";
+		function applyTheme() {
+			if (localStorage.getItem("theme") === "dark") {
+				document.body.classList.add("dark-mode");
+				themeButton.innerText = "☀ Light Mode";
+			} else {
+				document.body.classList.remove("dark-mode");
+				themeButton.innerText = "🌙 Dark Mode";
+			}
 		}
-	}
 
-	function toggleTheme() {
-		if (document.body.classList.contains("dark-mode")) {
-			localStorage.setItem("theme", "light");
-		} else {
-			localStorage.setItem("theme", "dark");
+		function toggleTheme() {
+			if (document.body.classList.contains("dark-mode")) {
+				localStorage.setItem("theme", "light");
+			} else {
+				localStorage.setItem("theme", "dark");
+			}
+
+			applyTheme();
 		}
 
 		applyTheme();
-	}
 
-	applyTheme();
+		function openEmailConfirm(button) {
+			emailSendUrl = button.getAttribute("data-url");
 
-	function openEmailConfirm(button) {
-		emailSendUrl = button.getAttribute("data-url");
-
-		document.getElementById("emailConfirmPopup").style.display = "flex";
-	}
-
-	function closeEmailConfirm() {
-		document.getElementById("emailConfirmPopup").style.display = "none";
-	}
-
-	function sendEmailNow() {
-		if (emailSendUrl) {
-			window.location.href = emailSendUrl;
+			document.getElementById("emailConfirmPopup").style.display = "flex";
 		}
-	}
 
-	setTimeout(() => {
-		const toast = document.getElementById("toast");
-
-		if (toast) {
-			toast.remove();
+		function closeEmailConfirm() {
+			document.getElementById("emailConfirmPopup").style.display = "none";
 		}
-	}, 5000);
-</script>
 
-<script th:if="${param.emailSent}">
-    alert("✅ Career report email sent successfully!");
-</script>
+		function sendEmailNow() {
+			if (emailSendUrl) {
+				window.location.href = emailSendUrl;
+			}
+		}
 
-<script th:if="${param.emailFailed}">
-    alert("❌ Failed to send email. Check backend console.");
-</script>
+		setTimeout(() => {
+			const toast = document.getElementById("toast");
+
+			if (toast) {
+				toast.remove();
+			}
+		}, 5000);
+	</script>
+
+	<div th:if="${param.emailSent}" class="popup-overlay">
+		<div class="popup-card success">
+			<div class="icon">✅</div>
+			<h2>Email Sent</h2>
+			<p>Career report has been delivered successfully.</p>
+			<button onclick="closePopup()">Awesome</button>
+		</div>
+	</div>
+
+	<div th:if="${param.emailFailed}" class="popup-overlay">
+		<div class="popup-card error">
+			<div class="icon">❌</div>
+			<h2>Email Failed</h2>
+			<p>Unable to send email. Please try again.</p>
+			<button onclick="closePopup()">OK</button>
+		</div>
+	</div>
+
+	<script>
+		function closePopup() {
+			document.querySelector(".popup-overlay").style.display = "none";
+		}
+	</script>
+
+
+	<script th:if="${param.emailFailed}">
+		alert("❌ Failed to send email. Check backend console.");
+	</script>
 
 </body>
+
 </html>
