@@ -52,6 +52,7 @@ public class SecurityConfig {
 
                 // PUBLIC PAGES
                 .requestMatchers(
+                		"/",
                         "/home",
                         "/login",
                         "/register",
@@ -69,7 +70,7 @@ public class SecurityConfig {
                 .loginProcessingUrl("/login")
 
                 // after login go dashboard
-                .defaultSuccessUrl("/", true)
+                .defaultSuccessUrl("/dashboard", true)
 
                 .failureUrl("/login?error")
                 .permitAll()

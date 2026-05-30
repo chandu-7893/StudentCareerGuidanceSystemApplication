@@ -103,10 +103,10 @@ public class StudentController {
         }
     }
 
-    @GetMapping("/")
-    public String home(@RequestParam(required = false) String keyword,
-                       Principal principal,
-                       Model model) {
+    @GetMapping("/dashboard")
+    public String dashboard(@RequestParam(required = false) String keyword,
+                            Principal principal,
+                            Model model) {
 
         System.out.println("Logged in user: " + principal.getName());
 
