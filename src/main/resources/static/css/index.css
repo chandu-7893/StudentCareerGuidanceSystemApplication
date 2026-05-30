@@ -960,3 +960,112 @@ body {
     text-align: center;
     box-shadow: 0 10px 25px rgba(37,99,235,.25);
 }
+
+
+.delete-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(12px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+.delete-card{
+    width:450px;
+    padding:35px;
+    border-radius:30px;
+    text-align:center;
+
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.35);
+
+    animation:popup .35s ease;
+}
+
+.delete-icon{
+    font-size:70px;
+    margin-bottom:15px;
+}
+
+.delete-card h2{
+    color:white;
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.delete-card p{
+    color:#d6d6d6;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.delete-actions{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+}
+
+.cancel-btn,
+.confirm-btn{
+    padding:12px 28px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    text-decoration:none;
+    font-weight:700;
+    transition:.3s;
+}
+
+.cancel-btn{
+    background:white;
+}
+
+.confirm-btn{
+    color:white;
+    background:linear-gradient(
+        135deg,
+        #ff1744,
+        #ff5252
+    );
+}
+
+.confirm-btn:hover{
+    transform:translateY(-3px);
+}
+
+.cancel-btn:hover{
+    transform:translateY(-3px);
+}
+
+.delete-btn{
+    background:linear-gradient(
+        135deg,
+        #ff1744,
+        #ff5252
+    );
+    color:white;
+    border:none;
+    padding:10px 22px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.7);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
