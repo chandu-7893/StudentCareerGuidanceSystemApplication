@@ -12,13 +12,47 @@ body {
 }
 
 .hero {
-    min-height: 100vh;
+    position: relative;
+    min-height: 86vh;
     padding: 25px;
     color: white;
     background:
         radial-gradient(circle at top left, rgba(59,130,246,.55), transparent 30%),
         radial-gradient(circle at bottom right, rgba(168,85,247,.55), transparent 35%),
         linear-gradient(135deg, #020617, #1e3a8a, #2563eb);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+    filter: blur(95px);
+    left: -130px;
+    top: 120px;
+    animation: floatGlow 7s infinite alternate;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    border-radius: 50%;
+    background: rgba(124,58,237,.25);
+    filter: blur(90px);
+    right: -90px;
+    bottom: -90px;
+    animation: floatGlow 8s infinite alternate-reverse;
+}
+
+.navbar,
+.hero-grid {
+    position: relative;
+    z-index: 2;
 }
 
 .navbar {
@@ -68,7 +102,7 @@ body {
 
 .hero-grid {
     max-width: 1250px;
-    margin: 95px auto 0;
+    margin: 78px auto 0;
     display: grid;
     grid-template-columns: 1.1fr .9fr;
     gap: 45px;
@@ -86,9 +120,9 @@ body {
 }
 
 .hero-left h1 {
-    font-size: 68px;
+    font-size: 64px;
     line-height: 1.05;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
 }
 
 .hero-left h1 span {
@@ -99,13 +133,13 @@ body {
 .hero-left p {
     max-width: 680px;
     color: #dbeafe;
-    font-size: 20px;
+    font-size: 19px;
     line-height: 1.8;
 }
 
 .hero-buttons,
 .cta-actions {
-    margin-top: 34px;
+    margin-top: 32px;
     display: flex;
     gap: 18px;
     flex-wrap: wrap;
@@ -128,6 +162,33 @@ body {
 .secondary-btn {
     background: linear-gradient(135deg, #22c55e, #16a34a);
     color: white;
+}
+
+.quick-stats {
+    display: flex;
+    gap: 18px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.quick-stats div {
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(12px);
+    padding: 18px 23px;
+    border-radius: 20px;
+    min-width: 155px;
+    border: 1px solid rgba(255,255,255,.18);
+}
+
+.quick-stats h2 {
+    color: white;
+    font-size: 28px;
+}
+
+.quick-stats span {
+    color: #dbeafe;
+    font-weight: 700;
+    font-size: 14px;
 }
 
 .hero-right {
@@ -208,11 +269,65 @@ body {
     bottom: 10px;
 }
 
+/* ACCESS CARDS */
+
+.access-section {
+    width: 92%;
+    margin: -40px auto 55px;
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 26px;
+}
+
+.access-card {
+    padding: 34px;
+    border-radius: 32px;
+    color: white;
+    box-shadow: 0 25px 65px rgba(15,23,42,.18);
+    transition: .35s;
+}
+
+.login-access {
+    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+}
+
+.register-access {
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+}
+
+.access-icon {
+    font-size: 46px;
+    margin-bottom: 15px;
+}
+
+.access-card h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.access-card p {
+    line-height: 1.7;
+    color: #e0f2fe;
+    margin-bottom: 22px;
+}
+
+.access-card a {
+    display: inline-block;
+    text-decoration: none;
+    background: white;
+    color: #2563eb;
+    font-weight: 900;
+    padding: 13px 24px;
+    border-radius: 999px;
+}
+
+/* STATS */
+
 .stats-section {
     width: 92%;
-    margin: -55px auto 50px;
-    position: relative;
-    z-index: 5;
+    margin: 35px auto 50px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 22px;
@@ -233,6 +348,8 @@ body {
     color: #2563eb;
     margin-bottom: 10px;
 }
+
+/* SECTIONS */
 
 .section {
     padding: 85px 6%;
@@ -266,14 +383,16 @@ body {
 }
 
 .card-grid,
-.college-grid {
+.college-grid,
+.success-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
 }
 
 .career-card,
-.college-card {
+.college-card,
+.success-card {
     position: relative;
     overflow: hidden;
     padding: 30px;
@@ -285,7 +404,8 @@ body {
 }
 
 .career-card::before,
-.college-card::before {
+.college-card::before,
+.success-card::before {
     content: "";
     position: absolute;
     width: 130px;
@@ -314,6 +434,8 @@ body {
     line-height: 1.7;
 }
 
+/* COLLEGES */
+
 .college-bg {
     background:
         radial-gradient(circle at top right, rgba(37,99,235,.14), transparent 28%),
@@ -335,6 +457,8 @@ body {
     margin-top: 15px;
     color: #2563eb;
 }
+
+/* ROADMAP */
 
 .roadmap-line {
     display: grid;
@@ -374,14 +498,29 @@ body {
     line-height: 1.7;
 }
 
-.career-card:hover,
-.college-card:hover,
-.roadmap-step:hover,
-.stat-card:hover,
-.primary-btn:hover,
-.secondary-btn:hover {
-    transform: translateY(-8px);
+/* SUCCESS */
+
+.success-section {
+    background: #f1f5f9;
 }
+
+.success-card p {
+    color: #475569;
+    line-height: 1.8;
+    margin: 18px 0;
+}
+
+.success-card h4 {
+    color: #1e3a8a;
+    font-size: 20px;
+}
+
+.stars {
+    color: #f59e0b;
+    font-size: 20px;
+}
+
+/* CTA */
 
 .cta-section {
     width: 92%;
@@ -409,21 +548,70 @@ body {
     color: #dbeafe;
 }
 
-footer {
+/* FOOTER */
+
+.footer {
     background: #020617;
     color: white;
-    text-align: center;
-    padding: 28px;
+    padding: 35px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
 }
 
-/* MOBILE */
+.footer p {
+    color: #94a3b8;
+    margin-top: 6px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+/* HOVER */
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.career-card:hover,
+.college-card:hover,
+.roadmap-step:hover,
+.stat-card:hover,
+.access-card:hover,
+.success-card:hover {
+    transform: translateY(-8px);
+}
+
+/* ANIMATION */
+
+@keyframes floatGlow {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(60px);
+    }
+}
+
+/* RESPONSIVE */
+
 @media(max-width: 950px) {
+
     .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
     }
 
-    .hero-buttons {
+    .hero-buttons,
+    .quick-stats {
         justify-content: center;
     }
 
@@ -439,6 +627,7 @@ footer {
 }
 
 @media(max-width: 650px) {
+
     .navbar {
         flex-direction: column;
         gap: 18px;
@@ -474,5 +663,10 @@ footer {
 
     .mini-card {
         display: none;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
     }
 }
