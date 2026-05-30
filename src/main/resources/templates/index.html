@@ -8,24 +8,22 @@
 </head>
 
 <body>
-	
-	<div th:if="${success}" class="success-msg">
-	    <p th:text="${success}"></p>
-	</div>
 
-	<div th:if="${error}" class="error-msg">
-	    <p th:text="${error}"></p>
-	</div>
+<div th:if="${success}" class="success-msg">
+    <p th:text="${success}"></p>
+</div>
+
+<div th:if="${error}" class="error-msg">
+    <p th:text="${error}"></p>
+</div>
 
 <div class="header">
-
     <div>
         <h1>Student Career Guidance System</h1>
         <p>For 10th, 12th, Diploma and Degree completed students</p>
     </div>
 
     <div class="header-actions">
-
         <button type="button" class="theme-toggle" onclick="toggleTheme()">
             🌙 Dark Mode
         </button>
@@ -36,13 +34,10 @@
                    th:value="${_csrf.token}">
             <button type="submit" class="logout-btn">Logout</button>
         </form>
-
     </div>
-
 </div>
 
 <div class="dashboard">
-
     <div class="dash-card">
         <h3>Total Students</h3>
         <span th:text="${totalStudents}">0</span>
@@ -67,11 +62,9 @@
         <h3>Degree Students</h3>
         <span th:text="${degreeCount}">0</span>
     </div>
-
 </div>
 
 <div class="chart-section">
-
     <div class="chart-card">
         <h2>📊 Qualification Statistics</h2>
 
@@ -79,7 +72,6 @@
             <canvas id="qualificationChart"></canvas>
         </div>
     </div>
-
 </div>
 
 <div class="main">
@@ -98,28 +90,13 @@
 
             <input type="hidden" th:field="*{id}">
 
-            <input type="text"
-                   th:field="*{name}"
-                   placeholder="Student Name"
-                   required>
+            <input type="text" th:field="*{name}" placeholder="Student Name" required>
+            <input type="email" th:field="*{email}" placeholder="Email" required>
+            <input type="text" th:field="*{phone}" placeholder="Phone Number" required>
 
-            <input type="email"
-                   th:field="*{email}"
-                   placeholder="Email"
-                   required>
+            <input type="file" name="imageFile" accept="image/*">
 
-            <input type="text"
-                   th:field="*{phone}"
-                   placeholder="Phone Number"
-                   required>
-
-            <input type="file"
-                   name="imageFile"
-                   accept="image/*">
-
-            <select id="qualification"
-                    th:field="*{qualification}"
-                    required>
+            <select id="qualification" th:field="*{qualification}" required>
                 <option value="">Select Qualification</option>
                 <option value="10th">10th Completed</option>
                 <option value="12th">12th Completed</option>
@@ -127,93 +104,64 @@
                 <option value="Degree">Degree Completed</option>
             </select>
 
-			<h3 class="education-title">📚 Education Details</h3>
+            <h3 class="education-title">📚 Education Details</h3>
 
-			<div id="educationSection">
+            <div id="educationSection">
 
-			    <!-- 10TH DETAILS -->
+                <div class="section-label">🎓 10th Education Details</div>
 
-			    <div class="section-label">
-			        🎓 10th Education Details
-			    </div>
+                <div id="tenthSection">
+                    <input type="text" th:field="*{tenthSchool}" placeholder="10th School Name">
 
-			    <div id="tenthSection">
+                    <input type="number"
+                           step="0.01"
+                           th:field="*{tenthPercentage}"
+                           placeholder="10th Percentage">
 
-			        <input type="text"
-			               th:field="*{tenthSchool}"
-			               placeholder="10th School Name">
+                    <input type="text" th:field="*{tenthYear}" placeholder="10th Passed Year">
+                </div>
 
-			        <input type="number"
-			               step="0.01"
-			               th:field="*{tenthPercentage}"
-			               placeholder="10th Percentage">
+                <div id="interSection">
+                    <div class="section-label">🏫 Intermediate / Diploma Details</div>
 
-			        <input type="text"
-			               th:field="*{tenthYear}"
-			               placeholder="10th Passed Year">
+                    <input type="text"
+                           th:field="*{intermediateCollege}"
+                           placeholder="Intermediate / Diploma College">
 
-			    </div>
+                    <select th:field="*{intermediateStream}">
+                        <option value="">Select Stream</option>
+                        <option value="MPC">MPC</option>
+                        <option value="BiPC">BiPC</option>
+                        <option value="CEC">CEC</option>
+                        <option value="MEC">MEC</option>
+                        <option value="Diploma">Diploma</option>
+                    </select>
 
-			    <!-- INTERMEDIATE DETAILS -->
+                    <input type="number"
+                           step="0.01"
+                           th:field="*{intermediatePercentage}"
+                           placeholder="Intermediate Percentage">
 
-			    <div id="interSection">
+                    <input type="text"
+                           th:field="*{intermediateYear}"
+                           placeholder="Intermediate Passed Year">
+                </div>
 
-			        <div class="section-label">
-			            🏫 Intermediate / Diploma Details
-			        </div>
+                <div id="degreeSection">
+                    <div class="section-label">🎯 Degree Education Details</div>
 
-			        <input type="text"
-			               th:field="*{intermediateCollege}"
-			               placeholder="Intermediate / Diploma College">
+                    <input type="text" th:field="*{degreeCollege}" placeholder="Degree College Name">
+                    <input type="text" th:field="*{degreeCourse}" placeholder="Degree Course">
 
-			        <select th:field="*{intermediateStream}">
-			            <option value="">Select Stream</option>
-			            <option value="MPC">MPC</option>
-			            <option value="BiPC">BiPC</option>
-			            <option value="CEC">CEC</option>
-			            <option value="MEC">MEC</option>
-			            <option value="Diploma">Diploma</option>
-			        </select>
+                    <input type="number"
+                           step="0.01"
+                           th:field="*{degreePercentage}"
+                           placeholder="Degree Percentage">
 
-			        <input type="number"
-			               step="0.01"
-			               th:field="*{intermediatePercentage}"
-			               placeholder="Intermediate Percentage">
+                    <input type="text" th:field="*{degreeYear}" placeholder="Degree Passed Year">
+                </div>
+            </div>
 
-			        <input type="text"
-			               th:field="*{intermediateYear}"
-			               placeholder="Intermediate Passed Year">
-
-			    </div>
-
-			    <!-- DEGREE DETAILS -->
-
-			    <div id="degreeSection">
-
-			        <div class="section-label">
-			            🎯 Degree Education Details
-			        </div>
-
-			        <input type="text"
-			               th:field="*{degreeCollege}"
-			               placeholder="Degree College Name">
-
-			        <input type="text"
-			               th:field="*{degreeCourse}"
-			               placeholder="Degree Course">
-
-			        <input type="number"
-			               step="0.01"
-			               th:field="*{degreePercentage}"
-			               placeholder="Degree Percentage">
-
-			        <input type="text"
-			               th:field="*{degreeYear}"
-			               placeholder="Degree Passed Year">
-
-			    </div>
-
-			</div>
             <input type="number"
                    step="0.01"
                    th:field="*{percentage}"
@@ -232,7 +180,6 @@
             <button type="submit">
                 Generate Career Roadmap
             </button>
-
         </form>
     </div>
 
@@ -254,13 +201,9 @@
 <div class="table-card">
 
     <div class="table-top">
-
         <h2>Registered Students</h2>
 
-        <form class="search-form"
-              method="get"
-              th:action="@{/}">
-
+        <form class="search-form" method="get" th:action="@{/}">
             <input type="text"
                    name="keyword"
                    th:value="${keyword}"
@@ -268,12 +211,8 @@
 
             <button type="submit">Search</button>
 
-            <a th:href="@{/}" class="clear-btn">
-                Clear
-            </a>
-
+            <a th:href="@{/}" class="clear-btn">Clear</a>
         </form>
-
     </div>
 
     <table>
@@ -292,31 +231,22 @@
         </thead>
 
         <tbody>
-
         <tr th:if="${#lists.isEmpty(students)}">
-            <td colspan="9" class="no-data">
-                No students found
-            </td>
+            <td colspan="9" class="no-data">No students found</td>
         </tr>
 
         <tr th:each="s : ${students}">
-
             <td th:text="${s.id}"></td>
 
             <td>
-				<img th:if="${s.photo != null}"
-				     th:src="${s.photo}"
-				     alt="Student Photo"
-				     class="student-img">
+                <img th:if="${s.photo != null}"
+                     th:src="${s.photo}"
+                     alt="Student Photo"
+                     class="student-img">
 
-				<div th:if="${s.photo == null}"
-				     class="student-placeholder">
-				     👤
-				</div>
-
-                <span th:if="${s.photo == null}">
-                    No Photo
-                </span>
+                <div th:if="${s.photo == null}" class="student-placeholder">
+                    👤
+                </div>
             </td>
 
             <td th:text="${s.name}"></td>
@@ -327,33 +257,57 @@
             <td th:text="${s.interest}"></td>
 
             <td class="action-buttons">
-
-                <a class="edit"
-                   th:href="@{/edit/{id}(id=${s.id})}">
+                <a class="edit" th:href="@{/edit/{id}(id=${s.id})}">
                     Edit
                 </a>
 
-                <a class="roadmap-btn"
-                   th:href="@{/roadmap/{id}(id=${s.id})}">
+                <a class="roadmap-btn" th:href="@{/roadmap/{id}(id=${s.id})}">
                     Roadmap
                 </a>
 
-				<button class="delete-btn"
-				        th:onclick="'openDeleteModal(' + ${student.id} + ')'">
-				    🗑 Delete
-				</button>
-
+                <button type="button"
+                        class="delete-btn"
+                        th:onclick="'openDeleteModal(' + ${s.id} + ', \'' + ${s.name} + '\')'">
+                    🗑 Delete
+                </button>
             </td>
-
         </tr>
-
         </tbody>
     </table>
+</div>
 
+<div id="deleteModal" class="delete-modal">
+    <div class="delete-card">
+
+        <button type="button" class="modal-close" onclick="closeDeleteModal()">×</button>
+
+        <div class="delete-icon">⚠️</div>
+
+        <h2>Delete Student?</h2>
+
+        <p>
+            Are you sure you want to delete
+            <b id="deleteStudentName">this student</b>?
+        </p>
+
+        <span class="warning-text">
+            This action cannot be undone.
+        </span>
+
+        <div class="delete-actions">
+            <button type="button" class="cancel-btn" onclick="closeDeleteModal()">
+                Cancel
+            </button>
+
+            <a id="deleteLink" class="confirm-btn">
+                Yes, Delete
+            </a>
+        </div>
+
+    </div>
 </div>
 
 <script th:inline="javascript">
-
     const tenth = [[${tenthCount}]];
     const twelfth = [[${twelfthCount}]];
     const diploma = [[${diplomaCount}]];
@@ -387,7 +341,6 @@
             }
         }
     });
-
 </script>
 
 <script>
@@ -434,48 +387,16 @@
 
     qualification.addEventListener("change", updateEducationFields);
     updateEducationFields();
-</script>
 
-<div id="deleteModal" class="delete-modal">
+    function openDeleteModal(id, name) {
+        document.getElementById("deleteModal").style.display = "flex";
+        document.getElementById("deleteLink").href = "/delete/" + id;
+        document.getElementById("deleteStudentName").innerText = name || "this student";
+    }
 
-    <div class="delete-card">
-
-        <div class="delete-icon">⚠️</div>
-
-        <h2>Delete Student?</h2>
-
-        <p>
-            This action cannot be undone.
-            The student record will be permanently removed.
-        </p>
-
-        <div class="delete-actions">
-
-            <button class="cancel-btn"
-                    onclick="closeDeleteModal()">
-                Cancel
-            </button>
-
-            <a id="deleteLink"
-               class="confirm-btn">
-                Delete
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-<script>
-function openDeleteModal(id) {
-    document.getElementById("deleteModal").style.display = "flex";
-    document.getElementById("deleteLink").href = "/delete/" + id;
-}
-
-function closeDeleteModal() {
-    document.getElementById("deleteModal").style.display = "none";
-}
+    function closeDeleteModal() {
+        document.getElementById("deleteModal").style.display = "none";
+    }
 </script>
 
 </body>

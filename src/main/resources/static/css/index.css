@@ -1069,3 +1069,168 @@ body {
         opacity:1;
     }
 }
+
+.delete-actions{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    align-items:center;
+}
+
+.cancel-btn,
+.confirm-btn{
+    min-width:120px;
+    padding:13px 28px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    text-decoration:none;
+    font-weight:700;
+    font-size:15px;
+    text-align:center;
+}
+
+.cancel-btn{
+    background:#ffffff;
+    color:#111827;
+}
+
+.confirm-btn{
+    background:linear-gradient(135deg,#ff1744,#ff5252);
+    color:#ffffff;
+}
+
+
+.delete-btn{
+    width:auto;
+    min-width:120px;
+    background:linear-gradient(135deg,#ff1744,#ff5252);
+    color:white;
+    border:none;
+    padding:10px 22px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+
+.delete-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(2, 6, 23, 0.75);
+    backdrop-filter: blur(14px);
+    z-index: 99999;
+}
+
+.delete-card {
+    position: relative;
+    width: 420px;
+    max-width: 90%;
+    padding: 38px 32px;
+    text-align: center;
+    border-radius: 30px;
+    background: linear-gradient(145deg, rgba(15,23,42,.96), rgba(30,41,59,.92));
+    border: 1px solid rgba(255,255,255,.14);
+    box-shadow: 0 30px 90px rgba(0,0,0,.45);
+    animation: deletePop .35s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.delete-icon {
+    font-size: 64px;
+    margin-bottom: 15px;
+}
+
+.delete-card h2 {
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.delete-card p {
+    color: #e5e7eb;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.warning-text {
+    display: block;
+    margin: 14px 0 28px;
+    color: #fca5a5;
+    font-weight: 700;
+}
+
+.delete-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.cancel-btn,
+.confirm-btn {
+    min-width: 135px;
+    padding: 13px 26px;
+    border: none;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: .25s;
+}
+
+.cancel-btn {
+    background: #f8fafc;
+    color: #111827;
+}
+
+.confirm-btn {
+    background: linear-gradient(135deg, #ff1744, #ff4d6d);
+    color: #fff;
+    box-shadow: 0 12px 28px rgba(255,23,68,.35);
+}
+
+.cancel-btn:hover,
+.confirm-btn:hover {
+    transform: translateY(-3px);
+}
+
+.delete-btn {
+    width: auto;
+    min-width: 125px;
+    padding: 11px 22px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ff1744, #ff4d6d);
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255,23,68,.28);
+}
+
+@keyframes deletePop {
+    from {
+        transform: scale(.75) translateY(25px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
