@@ -348,5 +348,13 @@
 	}, 5000);
 </script>
 
+<script th:if="${param.emailSent}">
+    alert("✅ Career report email sent successfully!");
+</script>
+
+<script th:if="${param.emailFailed}">
+    alert("❌ Failed to send email. Check backend console.");
+</script>
+
 </body>
 </html>

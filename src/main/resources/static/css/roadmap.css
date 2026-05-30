@@ -740,3 +740,23 @@ body {
 		text-align: center;
 	}
 }
+
+.success-msg {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin: 15px auto;
+    max-width: 900px;
+    font-weight: 600;
+}
+
+.error-msg {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin: 15px auto;
+    max-width: 900px;
+    font-weight: 600;
+}

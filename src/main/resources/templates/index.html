@@ -8,6 +8,14 @@
 </head>
 
 <body>
+	
+	<div th:if="${success}" class="success-msg">
+	    <p th:text="${success}"></p>
+	</div>
+
+	<div th:if="${error}" class="error-msg">
+	    <p th:text="${error}"></p>
+	</div>
 
 <div class="header">
 

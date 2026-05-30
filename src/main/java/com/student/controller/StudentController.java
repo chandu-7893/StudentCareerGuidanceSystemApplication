@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -39,11 +40,44 @@ public class StudentController {
                              CollegeService collegeService,
                              EmailService emailService,
                              Cloudinary cloudinary) {
-
         this.service = service;
         this.collegeService = collegeService;
         this.emailService = emailService;
         this.cloudinary = cloudinary;
+    }
+
+    @PostMapping("/send-report/{id}")
+    public String sendReport(@PathVariable Long id,
+                             RedirectAttributes redirectAttributes) {
+
+        try {
+            Student student = service.getStudentById(id);
+
+            if (student == null) {
+                redirectAttributes.addFlashAttribute(
+                        "error",
+                        "Student not found!"
+                );
+                return "redirect:/";
+            }
+
+            emailService.sendCareerReport(student);
+
+            redirectAttributes.addFlashAttribute(
+                    "success",
+                    "Career report email sent successfully!"
+            );
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            redirectAttributes.addFlashAttribute(
+                    "error",
+                    "Failed to send email: " + e.getMessage()
+            );
+        }
+
+        return "redirect:/";
     }
 
     @GetMapping("/email-report/{id}")
@@ -54,8 +88,8 @@ public class StudentController {
             Student student = service.getStudentById(id);
 
             if (student == null ||
-                student.getUsername() == null ||
-                !student.getUsername().equals(principal.getName())) {
+                    student.getUsername() == null ||
+                    !student.getUsername().equals(principal.getName())) {
                 return "redirect:/";
             }
 
@@ -149,7 +183,7 @@ public class StudentController {
         }
 
         if (student.getUsername() == null ||
-            !student.getUsername().equals(principal.getName())) {
+                !student.getUsername().equals(principal.getName())) {
             return "redirect:/";
         }
 
@@ -157,7 +191,10 @@ public class StudentController {
         model.addAttribute("suggestion", service.getCareerSuggestion(student));
         model.addAttribute("careerMatches", service.getAiCareerMatches(student));
         model.addAttribute("roadmap", service.getCareerRoadmap(student));
-        model.addAttribute("colleges", collegeService.getColleges(student.getQualification()));
+        model.addAttribute(
+                "colleges",
+                collegeService.getColleges(student.getQualification())
+        );
 
         return "roadmap";
     }
@@ -172,8 +209,8 @@ public class StudentController {
                 service.getStudentById(id);
 
         if (student == null ||
-            student.getUsername() == null ||
-            !student.getUsername().equals(principal.getName())) {
+                student.getUsername() == null ||
+                !student.getUsername().equals(principal.getName())) {
             response.sendRedirect("/");
             return;
         }
@@ -285,8 +322,8 @@ public class StudentController {
                 service.getStudentById(id);
 
         if (student == null ||
-            student.getUsername() == null ||
-            !student.getUsername().equals(principal.getName())) {
+                student.getUsername() == null ||
+                !student.getUsername().equals(principal.getName())) {
             return "redirect:/";
         }
 
@@ -311,8 +348,8 @@ public class StudentController {
                 service.getStudentById(id);
 
         if (student != null &&
-            student.getUsername() != null &&
-            student.getUsername().equals(principal.getName())) {
+                student.getUsername() != null &&
+                student.getUsername().equals(principal.getName())) {
 
             service.deleteStudent(id);
         }

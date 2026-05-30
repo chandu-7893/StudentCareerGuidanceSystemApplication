@@ -14,6 +14,12 @@ public class EmailService {
     @Value("${resend.api.key}")
     private String apiKey;
 
+    @Value("${resend.from.email}")
+    private String fromEmail;
+
+    @Value("${resend.test.to}")
+    private String testEmail;
+
     private final StudentService studentService;
 
     public EmailService(StudentService studentService) {
@@ -22,50 +28,43 @@ public class EmailService {
 
     public void sendCareerReport(Student student) {
 
-        System.out.println("===== EMAIL METHOD STARTED =====");
-
-        if (student == null) {
-            throw new RuntimeException("Student object is null");
-        }
-
-        System.out.println("Student email: " + student.getEmail());
-
-        if (student.getEmail() == null || student.getEmail().trim().isEmpty()) {
-            throw new RuntimeException("Student email is empty");
-        }
-
-        if (apiKey == null || apiKey.isBlank()) {
-            throw new RuntimeException("Resend API key is missing");
-        }
-
-        System.out.println("Resend key loaded: YES");
-
-        String body =
-                "<h2>Hello " + student.getName() + "</h2>" +
-                "<p>Here is your career guidance report.</p>" +
-                "<p><b>Qualification:</b> " + student.getQualification() + "</p>" +
-                "<p><b>Percentage:</b> " + student.getPercentage() + "%</p>" +
-                "<p><b>Interest:</b> " + student.getInterest() + "</p>" +
-                "<h3>Career Suggestion</h3>" +
-                "<p>" + studentService.getCareerSuggestion(student) + "</p>" +
-                "<h3>Career Roadmap</h3>" +
-                "<p>" + studentService.getCareerRoadmap(student) + "</p>" +
-                "<br><p>Thank you,<br>Student Career Guidance System</p>";
-
         try {
+            System.out.println("===== EMAIL STARTED =====");
+
+            if (student == null) {
+                throw new RuntimeException("Student is null");
+            }
+
+            if (apiKey == null || apiKey.isBlank()) {
+                throw new RuntimeException("Resend API key is missing");
+            }
+
+            System.out.println("Sending email to: " + testEmail);
+
+            String body =
+                    "<h2>Hello " + student.getName() + "</h2>" +
+                    "<p>Here is your career guidance report.</p>" +
+                    "<p><b>Qualification:</b> " + student.getQualification() + "</p>" +
+                    "<p><b>Percentage:</b> " + student.getPercentage() + "%</p>" +
+                    "<p><b>Interest:</b> " + student.getInterest() + "</p>" +
+                    "<h3>Career Suggestion</h3>" +
+                    "<p>" + studentService.getCareerSuggestion(student) + "</p>" +
+                    "<h3>Career Roadmap</h3>" +
+                    "<p>" + studentService.getCareerRoadmap(student) + "</p>" +
+                    "<br><p>Thank you,<br>Student Career Guidance System</p>";
+
             Resend resend = new Resend(apiKey);
 
             CreateEmailOptions params = CreateEmailOptions.builder()
-                    .from("Student Career Guidance <onboarding@resend.dev>")
-                    .to(student.getEmail().trim())
+                    .from(fromEmail)
+                    .to(testEmail)
                     .subject("Your Career Guidance Report")
                     .html(body)
                     .build();
 
             CreateEmailResponse response = resend.emails().send(params);
 
-            System.out.println("Email sent successfully");
-            System.out.println("Email ID: " + response.getId());
+            System.out.println("Email sent successfully. ID: " + response.getId());
 
         } catch (Exception e) {
             System.out.println("===== EMAIL ERROR =====");
